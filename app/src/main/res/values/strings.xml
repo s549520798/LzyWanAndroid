@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">LzyWanAndroid</string>
+    <string name="title_activity_login">登录</string>
+
+    <!-- Strings related to login -->
+    <string name="user_name">用户名</string>
+    <string name="user_password">密码</string>
+    <string name="login">登录</string>
+    <string name="fast_register">快速注册</string>
+
+    <!-- Strings related to register -->
+    <string name="register">注册</string>
+    <string name="user_repassword">确认密码</string>
+
+    <string name="title_activity_main">首页</string>
+    <string name="bottom_nav_home">主页</string>
+    <string name="bottom_nav_more">更多</string>
+    <string name="bottom_nav_person">个人中心</string>
+
+    <!-- Strings related to main activity-->
+    <string name="navigation_drawer_open">打开</string>
+    <string name="navigation_drawer_close">关闭</string>
+</resources>

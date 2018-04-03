@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LzyChip">
+        <attr name="setText" format="string" />
+        <attr name="setBackgroundColor" format="color" />
+        <attr name="setTextColor" format="color" />
+    </declare-styleable>
+
+</resources>
