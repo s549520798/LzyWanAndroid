@@ -13,15 +13,16 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.lazylee.lzywanandroid.R;
+import com.lazylee.lzywanandroid.view.LzyToast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View,
-        BottomNavigationView.OnNavigationItemSelectedListener{
+        BottomNavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "MainActivity";
-
+    private MainContract.Presenter mPresenter;
 
     @BindView(R.id.main_bottom_nav)
     BottomNavigationView mBottomNav;
@@ -31,7 +32,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     DrawerLayout mDrawerLayout;
     @BindView(R.id.main_left_nav)
     NavigationView mLeftNav;
-
 
 
     @Override
@@ -58,12 +58,12 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     @Override
     public void setPresenter(MainContract.Presenter presenter) {
-
+        this.mPresenter = presenter;
     }
 
     @Override
     public void showMessage(String msg) {
-
+        LzyToast.showMessage(msg, 1500);
     }
 
     @Override

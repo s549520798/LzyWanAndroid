@@ -6,6 +6,11 @@ package com.lazylee.lzywanandroid.activity.main;
  */
 
 public class MainPresenter implements MainContract.Presenter {
+    private static final String TAG = "MainPresenter";
+    private MainContract.View mView;
 
-
+    public MainPresenter(MainContract.View view) {
+        this.mView = view;
+        mView.setPresenter(this);
+    }
 }
