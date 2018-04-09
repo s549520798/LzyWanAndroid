@@ -9,6 +9,7 @@ import com.lazylee.lzywanandroid.entity.User;
 import com.lazylee.lzywanandroid.net.Api;
 import com.lazylee.lzywanandroid.net.ServiceResult;
 import com.lazylee.lzywanandroid.net.WanAndroidService;
+import com.lazylee.lzywanandroid.tools.Logger;
 
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
@@ -129,7 +130,7 @@ public class LoginPresenter implements LoginContract.Presenter {
 
                         @Override
                         public void onComplete() {
-                            Log.d(TAG, "onComplete: ");
+                            Logger.d("onComplete");
                             mLoginView.showProgressBar(false);
                         }
                     });
