@@ -13,15 +13,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <include layout="@layout/main_activity_appbar"/>
+
         <include layout="@layout/main_activity_container"/>
+
         <include layout="@layout/main_activity_bottom_nav"/>
+
     </android.support.design.widget.CoordinatorLayout>
     <android.support.design.widget.NavigationView
         android:id="@+id/main_left_nav"
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="true"
+        android:clickable="true"
+        android:focusable="true">
 
     </android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>
