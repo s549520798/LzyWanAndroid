@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.lazylee.lzywanandroid.R;
+import com.lazylee.lzywanandroid.activity.main.home.HomeFragment;
 import com.lazylee.lzywanandroid.view.LzyToast;
 
 import butterknife.BindView;
@@ -39,12 +40,21 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
         ButterKnife.bind(this);
+        mPresenter = new MainPresenter(this);
         setSupportActionBar(mToolBar);
         mBottomNav.setOnNavigationItemSelectedListener(this);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, mDrawerLayout, mToolBar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mDrawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+        setEnterFragment();
+    }
+
+    private void setEnterFragment() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fl_container,HomeFragment.newInstance(),HomeFragment.TAG)
+                .commit();
     }
 
     @Override
@@ -75,13 +85,13 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.navigation_home:
-
+                mPresenter.onFragmentChanged(getSupportFragmentManager(),MainContract.HOME);
                 return true;
-            case R.id.navigation_dashboard:
-
+            case R.id.navigation_guide:
+                mPresenter.onFragmentChanged(getSupportFragmentManager(),MainContract.GUIDE);
                 return true;
-            case R.id.navigation_notifications:
-
+            case R.id.navigation_project:
+                mPresenter.onFragmentChanged(getSupportFragmentManager(),MainContract.PROJECT);
                 return true;
         }
         return false;
