@@ -11,6 +11,5 @@ public interface BaseView<T extends BasePresenter> {
 
     void showMessage(String msg);
 
-    void showProgressBar(boolean show);
 
 }

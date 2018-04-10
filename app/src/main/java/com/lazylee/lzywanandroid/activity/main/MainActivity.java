@@ -76,10 +76,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         LzyToast.showMessage(msg, 1500);
     }
 
-    @Override
-    public void showProgressBar(boolean show) {
-
-    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

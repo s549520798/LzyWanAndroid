@@ -19,6 +19,8 @@ public interface RegisterContract {
         void showPasswordError(String error);
 
         void showRepasswordError(String error);
+
+        void showProgressBar(boolean show);
     }
 
     interface Presenter extends BasePresenter {

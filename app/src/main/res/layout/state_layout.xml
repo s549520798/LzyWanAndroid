@@ -11,10 +11,6 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:orientation="vertical">
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
 
         <ImageView
             android:layout_width="match_parent"
@@ -26,9 +22,5 @@
             android:layout_height="wrap_content"
             android:hint="@string/app_name"
             android:gravity="center"/>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

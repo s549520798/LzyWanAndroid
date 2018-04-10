@@ -18,6 +18,8 @@ public interface LoginContract {
 
         void enableLoginButton(boolean enable);
 
+        void showProgressBar(boolean show);
+
     }
 
     interface Presenter extends BasePresenter{
