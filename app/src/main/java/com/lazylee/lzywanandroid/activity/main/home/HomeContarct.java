@@ -1,5 +1,9 @@
 package com.lazylee.lzywanandroid.activity.main.home;
 
+import android.support.v7.widget.RecyclerView;
+
+import com.lazylee.lzywanandroid.adapter.ArticleAdapter;
+import com.lazylee.lzywanandroid.entity.Article;
 import com.lazylee.lzywanandroid.mvp.BasePresenter;
 import com.lazylee.lzywanandroid.mvp.BaseView;
 
@@ -16,6 +20,7 @@ public interface HomeContarct {
 
     }
     interface Presenter extends BasePresenter{
+        void loadArticles(ArticleAdapter adapter);
 
     }
 }

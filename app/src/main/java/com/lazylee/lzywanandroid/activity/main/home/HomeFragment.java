@@ -4,12 +4,18 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.lazylee.lzywanandroid.R;
+import com.lazylee.lzywanandroid.adapter.ArticleAdapter;
+import com.lazylee.lzywanandroid.adapter.viewholder.ArticleViewHolder;
+import com.lazylee.lzywanandroid.entity.Article;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,9 +30,11 @@ public class HomeFragment extends Fragment implements HomeContarct.View{
     public static final String TAG = "HomeFragment";
 
     private HomeContarct.Presenter mPresenter;
+    private ArticleAdapter mAdapter;
+    private ArrayList<Article> articles = new ArrayList<>();
 
     @BindView(R.id.recycle_home_frag)
-    RecyclerView mRecycle;
+    RecyclerView mRecyclerView;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -39,8 +47,7 @@ public class HomeFragment extends Fragment implements HomeContarct.View{
      * @return A new instance of fragment HomeFragment.
      */
     public static HomeFragment newInstance() {
-        HomeFragment fragment = new HomeFragment();
-        return fragment;
+        return new HomeFragment();
     }
 
     @Override
@@ -49,6 +56,7 @@ public class HomeFragment extends Fragment implements HomeContarct.View{
         if (getArguments() != null) {
 
         }
+
     }
 
     @Override
@@ -57,6 +65,10 @@ public class HomeFragment extends Fragment implements HomeContarct.View{
         // Inflate the layout for this fragment
         View mRootView = inflater.inflate(R.layout.home_fragment, container, false);
         ButterKnife.bind(this, mRootView);
+        mPresenter = new HomePresenter(this);
+        mAdapter = new ArticleAdapter(articles);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRecyclerView.setAdapter(mAdapter);
         return mRootView;
     }
 
