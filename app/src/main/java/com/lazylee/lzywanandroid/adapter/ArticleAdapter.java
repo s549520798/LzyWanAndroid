@@ -46,7 +46,13 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleViewHolder> {
     }
 
     public void updateArticles(List<Article> articles){
-        mList.addAll(articles);
+        if (mList == null){
+            mList = new ArrayList<>();
+            mList.addAll(articles);
+        }else {
+            mList.addAll(articles);
+        }
+
         notifyDataSetChanged();
     }
 }

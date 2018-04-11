@@ -33,7 +33,7 @@ public interface WanAndroidService {
     Observable<ServiceResult<List<Banner>>> getBanner();
 
     @GET("/article/list/{page}/json")
-    Observable<Page> getArticles(@Path("page") int page);
+    Observable<ServiceResult<Page>> getArticles(@Path("page") int page);
 
     @GET("/friend/json")
     Observable<List<CommonWebsite>> getCommonWebsites();

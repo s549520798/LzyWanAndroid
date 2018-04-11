@@ -14,13 +14,16 @@ import com.lazylee.lzywanandroid.mvp.BaseView;
 
 public interface HomeContarct {
 
-    interface View extends BaseView<Presenter>{
+    interface View extends BaseView<Presenter> {
+        void showStateView(boolean show);
 
         void showProgressIndicator(Boolean show);
 
     }
-    interface Presenter extends BasePresenter{
+
+    interface Presenter extends BasePresenter {
         void loadArticles(ArticleAdapter adapter);
+
 
     }
 }

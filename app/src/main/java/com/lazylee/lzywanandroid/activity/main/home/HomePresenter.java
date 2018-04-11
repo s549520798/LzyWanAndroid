@@ -8,6 +8,9 @@ import com.lazylee.lzywanandroid.entity.User;
 import com.lazylee.lzywanandroid.net.Api;
 import com.lazylee.lzywanandroid.net.ServiceResult;
 import com.lazylee.lzywanandroid.net.WanAndroidService;
+import com.lazylee.lzywanandroid.tools.Logger;
+
+import java.util.List;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -38,23 +41,27 @@ public class HomePresenter implements HomeContarct.Presenter {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
         WanAndroidService wanAndroidService = retrofit.create(WanAndroidService.class);
-        wanAndroidService.getArticles(0)
+        wanAndroidService.getArticles(1)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Page>() {
+                .subscribe(new Observer<ServiceResult<Page>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(Page page) {
-                        adapter.updateArticles(page.getDatas());
+                    public void onNext(ServiceResult<Page> pageServiceResult) {
+                        Page page = pageServiceResult.getData();
+                        if (page != null &&!page.getDatas().isEmpty()){
+                            mView.showStateView(false);
+                            adapter.updateArticles(page.getDatas());
+                        }
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        mView.showMessage(e.getMessage());
+
                     }
 
                     @Override

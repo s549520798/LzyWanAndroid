@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import com.lazylee.lzywanandroid.R;
 import com.lazylee.lzywanandroid.adapter.ArticleAdapter;
 import com.lazylee.lzywanandroid.adapter.viewholder.ArticleViewHolder;
 import com.lazylee.lzywanandroid.entity.Article;
+import com.lazylee.lzywanandroid.view.LzyToast;
 
 import java.util.ArrayList;
 
@@ -35,7 +37,8 @@ public class HomeFragment extends Fragment implements HomeContarct.View{
 
     @BindView(R.id.recycle_home_frag)
     RecyclerView mRecyclerView;
-
+    @BindView(R.id.state_layout_root)
+    NestedScrollView mStateView;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -91,7 +94,12 @@ public class HomeFragment extends Fragment implements HomeContarct.View{
 
     @Override
     public void showMessage(String msg) {
+        LzyToast.showMessage(msg,1500);
+    }
 
+    @Override
+    public void showStateView(boolean show) {
+        mStateView.setVisibility(show ? View.VISIBLE : View.GONE);
     }
 
     @Override
