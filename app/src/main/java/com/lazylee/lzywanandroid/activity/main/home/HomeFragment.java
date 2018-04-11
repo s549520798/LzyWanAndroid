@@ -69,6 +69,7 @@ public class HomeFragment extends Fragment implements HomeContarct.View{
         mAdapter = new ArticleAdapter(articles);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(mAdapter);
+        mPresenter.loadArticles(mAdapter);
         return mRootView;
     }
 
