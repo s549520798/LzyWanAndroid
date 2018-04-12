@@ -1,6 +1,7 @@
 package com.lazylee.lzywanandroid.activity.main.home;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,6 +17,7 @@ import com.lazylee.lzywanandroid.adapter.ArticleAdapter;
 import com.lazylee.lzywanandroid.adapter.viewholder.ArticleViewHolder;
 import com.lazylee.lzywanandroid.entity.Article;
 import com.lazylee.lzywanandroid.view.LzyToast;
+import com.lazylee.lzywanandroid.view.divider.ArticleRecycleDivider;
 
 import java.util.ArrayList;
 
@@ -72,6 +74,8 @@ public class HomeFragment extends Fragment implements HomeContarct.View{
         mAdapter = new ArticleAdapter(articles);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.addItemDecoration(new ArticleRecycleDivider(getResources()
+                .getColor(R.color.colorRecycleDivider)));
         mPresenter.loadArticles(mAdapter);
         return mRootView;
     }

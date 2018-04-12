@@ -1,5 +1,6 @@
 package com.lazylee.lzywanandroid.activity.main;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         mBottomNav.setOnNavigationItemSelectedListener(this);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, mDrawerLayout, mToolBar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+
+        mToolBar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
         mDrawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         setEnterFragment();

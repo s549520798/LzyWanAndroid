@@ -7,4 +7,7 @@
     <color name="colorWhiteB">#F5F5F5</color>
     <color name="colorNewPrimary">#03A9F4</color>
     <color name="colorNewPrimaryDark">#039BE5</color>
+    <color name="colorTextTitle">#222222</color>
+    <color name="colorTextCaptain">#999999</color>
+    <color name="colorRecycleDivider">#9B9B9B</color>
 </resources>
