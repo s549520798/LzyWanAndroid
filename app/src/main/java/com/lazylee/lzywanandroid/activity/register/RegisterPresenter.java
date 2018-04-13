@@ -2,7 +2,7 @@ package com.lazylee.lzywanandroid.activity.register;
 
 import android.text.TextUtils;
 
-import com.lazylee.lzywanandroid.entity.User;
+import com.lazylee.lzywanandroid.data.entity.User;
 import com.lazylee.lzywanandroid.net.Api;
 import com.lazylee.lzywanandroid.net.ServiceResult;
 import com.lazylee.lzywanandroid.net.WanAndroidService;

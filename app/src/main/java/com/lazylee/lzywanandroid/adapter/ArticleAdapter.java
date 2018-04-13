@@ -4,11 +4,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.lazylee.lzywanandroid.R;
 import com.lazylee.lzywanandroid.adapter.viewholder.ArticleViewHolder;
-import com.lazylee.lzywanandroid.entity.Article;
+import com.lazylee.lzywanandroid.data.entity.Article;
 
 import java.util.ArrayList;
 import java.util.List;

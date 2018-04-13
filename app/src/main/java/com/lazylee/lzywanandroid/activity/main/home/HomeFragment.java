@@ -1,26 +1,29 @@
 package com.lazylee.lzywanandroid.activity.main.home;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.net.Uri;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.lazylee.lzywanandroid.R;
 import com.lazylee.lzywanandroid.adapter.ArticleAdapter;
-import com.lazylee.lzywanandroid.adapter.viewholder.ArticleViewHolder;
-import com.lazylee.lzywanandroid.entity.Article;
+import com.lazylee.lzywanandroid.data.entity.Article;
 import com.lazylee.lzywanandroid.view.LzyToast;
 import com.lazylee.lzywanandroid.view.divider.ArticleRecycleDivider;
 
 import java.util.ArrayList;
 
+import butterknife.BindDrawable;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -29,7 +32,7 @@ import butterknife.ButterKnife;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment implements HomeContarct.View{
+public class HomeFragment extends Fragment implements HomeContarct.View {
 
     public static final String TAG = "HomeFragment";
 
@@ -40,7 +43,16 @@ public class HomeFragment extends Fragment implements HomeContarct.View{
     @BindView(R.id.recycle_home_frag)
     RecyclerView mRecyclerView;
     @BindView(R.id.state_layout_root)
-    NestedScrollView mStateView;
+    ConstraintLayout mStateView;
+    @BindView(R.id.state_image)
+    ImageView mEmptyImage;
+    @BindView(R.id.state_load_again)
+    TextView mTvLoadAgain;
+    @BindView(R.id.state_progress_bar)
+    ProgressBar mStateProgressBar;
+    @BindDrawable(R.drawable.ripple_text_bg)
+    Drawable drawable;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -98,12 +110,30 @@ public class HomeFragment extends Fragment implements HomeContarct.View{
 
     @Override
     public void showMessage(String msg) {
-        LzyToast.showMessage(msg,1500);
+        LzyToast.showMessage(msg, 1500);
     }
 
     @Override
     public void showStateView(boolean show) {
         mStateView.setVisibility(show ? View.VISIBLE : View.GONE);
+    }
+
+    @Override
+    public void showStateEmptyView(boolean show) {
+        showStateView(show);
+        showProgressIndicator(!show);
+        mEmptyImage.setVisibility(show ? View.VISIBLE : View.GONE);
+        mTvLoadAgain.setVisibility(show ? View.VISIBLE : View.GONE);
+    }
+
+    @Override
+    public void showUpLoadMore(boolean show) {
+
+    }
+
+    @Override
+    public void showDownLoadMore(boolean show) {
+
     }
 
     @Override

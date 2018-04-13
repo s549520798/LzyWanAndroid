@@ -1,4 +1,4 @@
-package com.lazylee.lzywanandroid.entity;
+package com.lazylee.lzywanandroid.data.entity;
 
 /**
  * banner 实体类

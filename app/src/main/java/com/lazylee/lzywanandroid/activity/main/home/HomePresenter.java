@@ -1,16 +1,10 @@
 package com.lazylee.lzywanandroid.activity.main.home;
 
-import android.support.v7.widget.RecyclerView;
-
 import com.lazylee.lzywanandroid.adapter.ArticleAdapter;
-import com.lazylee.lzywanandroid.entity.Page;
-import com.lazylee.lzywanandroid.entity.User;
+import com.lazylee.lzywanandroid.data.entity.Page;
 import com.lazylee.lzywanandroid.net.Api;
 import com.lazylee.lzywanandroid.net.ServiceResult;
 import com.lazylee.lzywanandroid.net.WanAndroidService;
-import com.lazylee.lzywanandroid.tools.Logger;
-
-import java.util.List;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;

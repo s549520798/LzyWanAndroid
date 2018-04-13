@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.lazylee.lzywanandroid.R;
-import com.lazylee.lzywanandroid.entity.Article;
+import com.lazylee.lzywanandroid.data.entity.Article;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

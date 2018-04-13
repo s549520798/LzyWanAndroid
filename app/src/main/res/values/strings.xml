@@ -21,8 +21,12 @@
     <string name="navigation_drawer_open">打开</string>
     <string name="navigation_drawer_close">关闭</string>
 
+    <!-- String  related to home fragment-->
+    <string name="state_load_again">重新加载</string>
+
     <!-- Strings related to article item-->
     <string name="article_item_text_author">作者:</string>
     <string name="article_item_text_type">分类:</string>
     <string name="article_item_text_date">时间:</string>
+    <string name="empty_page">页面为空</string>
 </resources>

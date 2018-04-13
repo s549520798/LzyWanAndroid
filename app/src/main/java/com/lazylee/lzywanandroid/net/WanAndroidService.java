@@ -1,15 +1,14 @@
 package com.lazylee.lzywanandroid.net;
 
-import com.lazylee.lzywanandroid.entity.Banner;
-import com.lazylee.lzywanandroid.entity.CommonWebsite;
-import com.lazylee.lzywanandroid.entity.HotKey;
-import com.lazylee.lzywanandroid.entity.Page;
-import com.lazylee.lzywanandroid.entity.User;
+import com.lazylee.lzywanandroid.data.entity.Banner;
+import com.lazylee.lzywanandroid.data.entity.CommonWebsite;
+import com.lazylee.lzywanandroid.data.entity.HotKey;
+import com.lazylee.lzywanandroid.data.entity.Page;
+import com.lazylee.lzywanandroid.data.entity.User;
 
 import java.util.List;
 
 import io.reactivex.Observable;
-import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;

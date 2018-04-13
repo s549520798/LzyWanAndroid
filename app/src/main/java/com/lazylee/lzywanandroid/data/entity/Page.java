@@ -1,4 +1,6 @@
-package com.lazylee.lzywanandroid.entity;
+package com.lazylee.lzywanandroid.data.entity;
+
+import org.greenrobot.greendao.annotation.Entity;
 
 import java.util.List;
 
@@ -6,7 +8,6 @@ import java.util.List;
  * page entity
  * Created by lazylee on 2018/3/23.
  */
-
 public class Page {
 
     private int curPage;

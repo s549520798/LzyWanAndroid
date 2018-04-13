@@ -7,7 +7,10 @@
     android:paddingLeft="@dimen/article_recycle_item_margin"
     android:paddingRight="@dimen/article_recycle_item_margin"
     android:paddingBottom="8dp"
-    android:paddingTop="8dp">
+    android:paddingTop="8dp"
+    android:background="@drawable/ripple_recycle_item_bg"
+    android:clickable="true"
+    android:focusable="true">
 
     <TextView
         android:id="@+id/article_item_title"
@@ -26,7 +29,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:hint="@string/article_item_text_author"
-        android:paddingLeft="4dp"
         android:paddingRight="4dp"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"

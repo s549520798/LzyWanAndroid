@@ -1,9 +1,6 @@
 package com.lazylee.lzywanandroid.activity.main.home;
 
-import android.support.v7.widget.RecyclerView;
-
 import com.lazylee.lzywanandroid.adapter.ArticleAdapter;
-import com.lazylee.lzywanandroid.entity.Article;
 import com.lazylee.lzywanandroid.mvp.BasePresenter;
 import com.lazylee.lzywanandroid.mvp.BaseView;
 
@@ -15,7 +12,14 @@ import com.lazylee.lzywanandroid.mvp.BaseView;
 public interface HomeContarct {
 
     interface View extends BaseView<Presenter> {
+
         void showStateView(boolean show);
+
+        void showStateEmptyView(boolean show);
+
+        void showUpLoadMore(boolean show);
+
+        void showDownLoadMore(boolean show);
 
         void showProgressIndicator(Boolean show);
 

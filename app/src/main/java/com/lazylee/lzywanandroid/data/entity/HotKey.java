@@ -1,14 +1,13 @@
-package com.lazylee.lzywanandroid.entity;
+package com.lazylee.lzywanandroid.data.entity;
 
 /**
- * commonly used website
+ * hot key 热搜词
  * Created by lazylee on 2018/3/23.
  */
 
-public class CommonWebsite {
+public class HotKey {
 
     private long id;
-    private String icon;
     private String link;
     private String name;
     private int order;
@@ -20,14 +19,6 @@ public class CommonWebsite {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon;
     }
 
     public String getLink() {
@@ -64,9 +55,8 @@ public class CommonWebsite {
 
     @Override
     public String toString() {
-        return "CommonWebsite{" +
+        return "HotKey{" +
                 "id=" + id +
-                ", icon='" + icon + '\'' +
                 ", link='" + link + '\'' +
                 ", name='" + name + '\'' +
                 ", order=" + order +

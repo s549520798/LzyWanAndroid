@@ -1,12 +1,23 @@
-package com.lazylee.lzywanandroid.entity;
+package com.lazylee.lzywanandroid.data.entity;
+
+import android.widget.ListView;
+
+import com.lazylee.lzywanandroid.data.converter.TagConverter;
+
+import org.greenrobot.greendao.annotation.Convert;
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Id;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import org.greenrobot.greendao.annotation.Generated;
 
 /**
  * article entity
  * Created by lazylee on 2018/3/23.
  */
-
+@Entity
 public class Article {
 
     private long id;
@@ -30,8 +41,42 @@ public class Article {
     private int type;
     private int visible;
     private int zan;
-    //TODO 找到替换Object的类
-    private ArrayList<Object> tags;
+    @Convert(columnType = String.class,converter = TagConverter.class)
+    private List<Tag> tags;
+
+    public Article() {
+    }
+
+    @Generated(hash = 1694465669)
+    public Article(long id, String apkLink, String author, long chapterId,
+            String chapterName, boolean collect, long courseId, String desc,
+            String envelopePic, boolean fresh, String link, String niceDate,
+            String origin, String projectLink, long publishTime,
+            long superChapterId, String superChapterName, String title, int type,
+            int visible, int zan, List<Tag> tags) {
+        this.id = id;
+        this.apkLink = apkLink;
+        this.author = author;
+        this.chapterId = chapterId;
+        this.chapterName = chapterName;
+        this.collect = collect;
+        this.courseId = courseId;
+        this.desc = desc;
+        this.envelopePic = envelopePic;
+        this.fresh = fresh;
+        this.link = link;
+        this.niceDate = niceDate;
+        this.origin = origin;
+        this.projectLink = projectLink;
+        this.publishTime = publishTime;
+        this.superChapterId = superChapterId;
+        this.superChapterName = superChapterName;
+        this.title = title;
+        this.type = type;
+        this.visible = visible;
+        this.zan = zan;
+        this.tags = tags;
+    }
 
     public long getId() {
         return id;
@@ -201,6 +246,14 @@ public class Article {
         this.zan = zan;
     }
 
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
+
     @Override
     public String toString() {
         return "Article{" +
@@ -227,5 +280,13 @@ public class Article {
                 ", zan=" + zan +
                 ", tags=" + tags +
                 '}';
+    }
+
+    public boolean getCollect() {
+        return this.collect;
+    }
+
+    public boolean getFresh() {
+        return this.fresh;
     }
 }

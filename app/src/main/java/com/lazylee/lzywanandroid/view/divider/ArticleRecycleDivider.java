@@ -22,7 +22,7 @@ public class ArticleRecycleDivider extends RecyclerView.ItemDecoration {
      * @param color divider color
      */
     public ArticleRecycleDivider(@ColorInt int color) {
-        this(color, 1);
+        this(color, 2);
     }
 
     public ArticleRecycleDivider(@ColorInt int color, int height) {
