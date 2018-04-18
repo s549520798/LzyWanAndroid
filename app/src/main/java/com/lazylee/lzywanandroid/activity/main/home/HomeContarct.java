@@ -21,13 +21,16 @@ public interface HomeContarct {
 
         void showDownLoadMore(boolean show);
 
-        void showProgressIndicator(Boolean show);
+        void showProgressIndicator(boolean show);
+
+        boolean isStateViewShow();
 
     }
 
     interface Presenter extends BasePresenter {
-        void loadArticles(ArticleAdapter adapter);
+        void updateArticles(ArticleAdapter adapter, int page);
 
+        void loadMoreArticles(ArticleAdapter adapter, int page);
 
     }
 }

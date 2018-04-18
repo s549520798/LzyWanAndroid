@@ -1,5 +1,6 @@
 package com.lazylee.lzywanandroid.adapter;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,7 +31,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleViewHolder> {
     @Override
     public ArticleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).
-                inflate(R.layout.home_article_recycle_item,parent,false);
+                inflate(R.layout.home_article_recycle_item, parent, false);
         return new ArticleViewHolder(view);
     }
 
@@ -44,14 +45,34 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleViewHolder> {
         return mList.size();
     }
 
-    public void updateArticles(List<Article> articles){
-        if (mList == null){
+    public void updateArticles(@NonNull List<Article> articles) {
+        if (mList == null) {
             mList = new ArrayList<>();
             mList.addAll(articles);
-        }else {
+        } else {
             mList.addAll(articles);
         }
 
         notifyDataSetChanged();
+    }
+
+    public void addArticle(@NonNull Article article) {
+        if (mList != null) {
+            mList.add(article);
+            notifyDataSetChanged();
+        }else {
+            mList = new ArrayList<>();
+            mList.add(article);
+            notifyDataSetChanged();
+        }
+    }
+
+    public void loadMoreArticles(@NonNull List<Article> articles) {
+        if (mList != null) {
+            if (mList.addAll(mList.size(), articles)) notifyDataSetChanged();
+        }else {
+            mList = new ArrayList<>();
+            if (mList.addAll(mList.size(), articles)) notifyDataSetChanged();
+        }
     }
 }

@@ -28,14 +28,15 @@ public class HomePresenter implements HomeContarct.Presenter {
     }
 
     @Override
-    public void loadArticles(final ArticleAdapter adapter) {
+    public void updateArticles(final ArticleAdapter adapter,int page) {
+        //上拉刷新
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Api.API_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
         WanAndroidService wanAndroidService = retrofit.create(WanAndroidService.class);
-        wanAndroidService.getArticles(1)
+        wanAndroidService.getArticles(page)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<ServiceResult<Page>>() {
@@ -48,14 +49,22 @@ public class HomePresenter implements HomeContarct.Presenter {
                     public void onNext(ServiceResult<Page> pageServiceResult) {
                         Page page = pageServiceResult.getData();
                         if (page != null &&!page.getDatas().isEmpty()){
-                            mView.showStateView(false);
+                            if (mView.isStateViewShow()){
+                                mView.showStateView(false);
+                            }
                             adapter.updateArticles(page.getDatas());
                         }
                     }
 
                     @Override
                     public void onError(Throwable e) {
-
+                        if (mView.isStateViewShow()){
+                            mView.showStateEmptyView(true);
+                        }else {
+                            mView.showStateView(true);
+                            mView.showStateEmptyView(true);
+                        }
+                        mView.showMessage(e.getMessage());
                     }
 
                     @Override
@@ -64,5 +73,10 @@ public class HomePresenter implements HomeContarct.Presenter {
                     }
                 });
 
+    }
+
+    @Override
+    public void loadMoreArticles(ArticleAdapter adapter, int page) {
+        //TODO 下拉 加载更多
     }
 }

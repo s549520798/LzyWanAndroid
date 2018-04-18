@@ -4,8 +4,10 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,10 +20,12 @@ import android.widget.TextView;
 import com.lazylee.lzywanandroid.R;
 import com.lazylee.lzywanandroid.adapter.ArticleAdapter;
 import com.lazylee.lzywanandroid.data.entity.Article;
+import com.lazylee.lzywanandroid.view.AppbarRefreshLayout;
 import com.lazylee.lzywanandroid.view.LzyToast;
 import com.lazylee.lzywanandroid.view.divider.ArticleRecycleDivider;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindDrawable;
 import butterknife.BindView;
@@ -32,13 +36,15 @@ import butterknife.ButterKnife;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment implements HomeContarct.View {
+public class HomeFragment extends Fragment implements HomeContarct.View, SwipeRefreshLayout.OnRefreshListener {
 
     public static final String TAG = "HomeFragment";
 
     private HomeContarct.Presenter mPresenter;
     private ArticleAdapter mAdapter;
     private ArrayList<Article> articles = new ArrayList<>();
+    private int mPage = 0;
+    private boolean mIsStateViewShow;
 
     @BindView(R.id.recycle_home_frag)
     RecyclerView mRecyclerView;
@@ -50,6 +56,8 @@ public class HomeFragment extends Fragment implements HomeContarct.View {
     TextView mTvLoadAgain;
     @BindView(R.id.state_progress_bar)
     ProgressBar mStateProgressBar;
+    @BindView(R.id.refresh_home_frag)
+    AppbarRefreshLayout mRefreshLayout;
     @BindDrawable(R.drawable.ripple_text_bg)
     Drawable drawable;
 
@@ -82,14 +90,29 @@ public class HomeFragment extends Fragment implements HomeContarct.View {
         // Inflate the layout for this fragment
         View mRootView = inflater.inflate(R.layout.home_fragment, container, false);
         ButterKnife.bind(this, mRootView);
+        return mRootView;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         mPresenter = new HomePresenter(this);
         mAdapter = new ArticleAdapter(articles);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.addItemDecoration(new ArticleRecycleDivider(getResources()
                 .getColor(R.color.colorRecycleDivider)));
-        mPresenter.loadArticles(mAdapter);
-        return mRootView;
+        mRefreshLayout.setOnRefreshListener(this);
+        showStateView(true);
+        showStateEmptyView(false);
+        showProgressIndicator(true);
+        mPresenter.updateArticles(mAdapter, mPage);
+    }
+
+    @Override
+    public void onRefresh() {
+        //TODO refresh the recyclerView here
+        mPresenter.updateArticles(mAdapter, 0);
     }
 
     @Override
@@ -115,20 +138,26 @@ public class HomeFragment extends Fragment implements HomeContarct.View {
 
     @Override
     public void showStateView(boolean show) {
+        mIsStateViewShow = show;
         mStateView.setVisibility(show ? View.VISIBLE : View.GONE);
     }
 
     @Override
     public void showStateEmptyView(boolean show) {
-        showStateView(show);
-        showProgressIndicator(!show);
-        mEmptyImage.setVisibility(show ? View.VISIBLE : View.GONE);
-        mTvLoadAgain.setVisibility(show ? View.VISIBLE : View.GONE);
+        if (isStateViewShow()) {
+            mStateProgressBar.setVisibility(show ? View.GONE : View.VISIBLE);
+            mEmptyImage.setVisibility(show ? View.VISIBLE : View.GONE);
+            mTvLoadAgain.setVisibility(show ? View.VISIBLE : View.GONE);
+        }
     }
 
     @Override
     public void showUpLoadMore(boolean show) {
+        if (mRefreshLayout.isRefreshing() && show) {
 
+        } else {
+            mRefreshLayout.setRefreshing(show);
+        }
     }
 
     @Override
@@ -137,7 +166,18 @@ public class HomeFragment extends Fragment implements HomeContarct.View {
     }
 
     @Override
-    public void showProgressIndicator(Boolean show) {
-
+    public void showProgressIndicator(boolean show) {
+        if (isStateViewShow()) {
+            mEmptyImage.setVisibility(show ? View.GONE : View.VISIBLE);
+            mTvLoadAgain.setVisibility(show ? View.GONE : View.VISIBLE);
+            mStateProgressBar.setVisibility(show ? View.VISIBLE : View.GONE);
+        }
     }
+
+    @Override
+    public boolean isStateViewShow() {
+        return mIsStateViewShow;
+    }
+
+
 }
