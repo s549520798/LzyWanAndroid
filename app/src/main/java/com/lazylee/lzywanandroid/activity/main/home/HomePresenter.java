@@ -2,6 +2,7 @@ package com.lazylee.lzywanandroid.activity.main.home;
 
 import com.lazylee.lzywanandroid.adapter.ArticleAdapter;
 import com.lazylee.lzywanandroid.data.entity.Page;
+import com.lazylee.lzywanandroid.data.greendao.DaoMaster;
 import com.lazylee.lzywanandroid.net.Api;
 import com.lazylee.lzywanandroid.net.ServiceResult;
 import com.lazylee.lzywanandroid.net.WanAndroidService;
@@ -29,6 +30,8 @@ public class HomePresenter implements HomeContarct.Presenter {
 
     @Override
     public void updateArticles(final ArticleAdapter adapter,int page) {
+
+
         //上拉刷新
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Api.API_BASE_URL)
