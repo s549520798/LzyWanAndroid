@@ -5,7 +5,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorNewPrimary</item>
         <item name="colorPrimaryDark">@color/colorNewPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>d
+        <item name="colorAccent">@color/colorNewAccent</item>
         <item name="windowNoTitle">true</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
 

@@ -20,7 +20,7 @@ public class App extends Application {
 
     private static App mInstance;
     private Context mContext;
-    private static final boolean ENCRYPTED = true;
+    private static final boolean ENCRYPTED = false;
     private DaoSession daoSession;
 
     @Override

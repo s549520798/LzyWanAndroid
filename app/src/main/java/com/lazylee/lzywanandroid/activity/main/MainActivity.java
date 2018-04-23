@@ -1,5 +1,6 @@
 package com.lazylee.lzywanandroid.activity.main;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,18 +11,20 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.lazylee.lzywanandroid.R;
 import com.lazylee.lzywanandroid.activity.main.home.HomeFragment;
+import com.lazylee.lzywanandroid.activity.search.SearchActivity;
 import com.lazylee.lzywanandroid.view.LzyToast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View,
-        BottomNavigationView.OnNavigationItemSelectedListener {
+        BottomNavigationView.OnNavigationItemSelectedListener{
 
     private static final String TAG = "MainActivity";
     private MainContract.Presenter mPresenter;
@@ -49,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
         mToolBar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
         mDrawerLayout.addDrawerListener(toggle);
+        mLeftNav.setNavigationItemSelectedListener(itemSelectedListener);
         toggle.syncState();
         setEnterFragment();
     }
@@ -56,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     private void setEnterFragment() {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.fl_container,HomeFragment.newInstance(),HomeFragment.TAG)
+                .replace(R.id.fl_container, HomeFragment.newInstance(), HomeFragment.TAG)
                 .commit();
     }
 
@@ -68,6 +72,29 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
             super.onBackPressed();
         }
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_toolbar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_toolbar_history:
+                //TODO 跳转到 history 页面
+                return true;
+            case R.id.menu_toolbar_search:
+                //TODO 跳转到 search 页面
+                startActivity(new Intent(this, SearchActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
+
 
     @Override
     public void setPresenter(MainContract.Presenter presenter) {
@@ -84,15 +111,37 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.navigation_home:
-                mPresenter.onFragmentChanged(getSupportFragmentManager(),MainContract.HOME);
+                mPresenter.onFragmentChanged(getSupportFragmentManager(), MainContract.HOME);
                 return true;
             case R.id.navigation_guide:
-                mPresenter.onFragmentChanged(getSupportFragmentManager(),MainContract.GUIDE);
+                mPresenter.onFragmentChanged(getSupportFragmentManager(), MainContract.GUIDE);
                 return true;
             case R.id.navigation_project:
-                mPresenter.onFragmentChanged(getSupportFragmentManager(),MainContract.PROJECT);
+                mPresenter.onFragmentChanged(getSupportFragmentManager(), MainContract.PROJECT);
                 return true;
         }
         return false;
     }
+    NavigationView.OnNavigationItemSelectedListener itemSelectedListener =
+            new NavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()){
+                case R.id.drawer_nav_menu_tree:
+                    showMessage("知识体系");
+                    return true;
+                case R.id.drawer_nav_menu_tools:
+                    showMessage("常用工具");
+                    return true;
+                case R.id.drawer_nav_menu_about:
+                    showMessage("关于");
+                    return true;
+                case R.id.drawer_nav_menu_report_issue:
+                    showMessage("提交bug");
+                    return true;
+            }
+            return false;
+        }
+    };
+
 }

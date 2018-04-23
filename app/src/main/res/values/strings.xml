@@ -12,12 +12,18 @@
     <string name="register">注册</string>
     <string name="user_repassword">确认密码</string>
 
+    <!-- Strings related to main activity-->
     <string name="title_activity_main">首页</string>
     <string name="bottom_nav_home">主页</string>
     <string name="bottom_nav_guide">导航</string>
     <string name="bottom_nav_project">项目</string>
-
-    <!-- Strings related to main activity-->
+    <string name="toolbar_history">阅读历史</string>
+    <string name="toolbar_search">搜索</string>
+    <string name="left_nav_logout">退出登录</string>
+    <string name="left_nav_tree">知识体系</string>
+    <string name="left_nav_tools">常用工具</string>
+    <string name="left_nav_about">关于</string>
+    <string name="left_nav_bug_report">提交bug</string>
     <string name="navigation_drawer_open">打开</string>
     <string name="navigation_drawer_close">关闭</string>
 

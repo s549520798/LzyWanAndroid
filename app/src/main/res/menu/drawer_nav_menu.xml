@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/menu_group_top"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/drawer_nav_menu_tree"
+            android:icon="@drawable/ic_tree_grey_24dp"
+            android:title="@string/left_nav_tree" />
+        <item
+            android:id="@+id/drawer_nav_menu_tools"
+            android:icon="@drawable/ic_tools_grey_24dp"
+            android:title="@string/left_nav_tools" />
+    </group>
+
+    <group android:id="@+id/menu_group_bottom"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/drawer_nav_menu_report_issue"
+            android:icon="@drawable/ic_bug_report_grey_24dp"
+            android:title="@string/left_nav_about" />
+        <item
+            android:id="@+id/drawer_nav_menu_about"
+            android:icon="@drawable/ic_information_grey_24dp"
+            android:title="@string/left_nav_bug_report" />
+
+    </group>
+    <group android:id="@+id/menu_group_logout"
+        android:checkableBehavior="none">
+        <item android:id="@+id/drawer_nav_menu_logout"
+            android:icon="@drawable/ic_log_out_grey_24dp"
+            android:title="@string/left_nav_logout"
+            android:visible="true"/>
+    </group>
+
+</menu>
