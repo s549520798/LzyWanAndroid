@@ -6,5 +6,9 @@
     <dimen name="activity_horizontal_padding">16dp</dimen>
     <dimen name="activity_vertical_padding">8dp</dimen>
 
-    <dimen name="search_view_text_padding">65dp</dimen>
+    <dimen name="search_view_text_padding_left">65dp</dimen>
+    <dimen name="search_view_text_padding_right">100dp</dimen>
+    <dimen name="search_view_btn_width">50dp</dimen>
+    <dimen name="search_view_btn_horizontal_padding">12dp</dimen>
+    <dimen name="search_view_close_btn_horizontal_padding">8dp</dimen>
 </resources>

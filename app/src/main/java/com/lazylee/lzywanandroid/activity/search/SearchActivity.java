@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 
 import com.lazylee.lzywanandroid.R;
 
@@ -18,13 +19,15 @@ public class SearchActivity extends AppCompatActivity {
 
     private static final String TAG = "SearchActivity";
     @BindView(R.id.searchView)
-    EditText mSearchEdit;
+    RelativeLayout mSearchView;
     @BindView(R.id.backBtn)
     ImageButton mBackBtn;
+    @BindView(R.id.closeBtn)
+    ImageButton mCloseBtn;
     @BindView(R.id.searchBtn)
     ImageButton mSearchBtn;
     @BindView(R.id.progressBar)
-    ProgressBar mPregressBar;
+    ProgressBar mProgressBar;
     @BindView(R.id.recycler_result)
     RecyclerView mResultView;
     @BindView(R.id.search_options)

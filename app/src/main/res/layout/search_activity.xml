@@ -6,49 +6,84 @@
     android:layout_height="match_parent"
     tools:context="com.lazylee.lzywanandroid.activity.search.SearchActivity">
 
-    <EditText
+
+    <RelativeLayout
         android:id="@+id/searchView"
         android:layout_width="0dp"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@null"
-        android:hint="@string/search_text_hint"
-        android:imeOptions="actionSearch"
-        android:inputType="number"
-        android:singleLine="true"
-        android:textColor="#212121"
-        android:textColorHint="#727272"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintEnd_toStartOf="@+id/searchBtn"
-        app:layout_constraintStart_toEndOf="@+id/backBtn" />
-
-    <ImageButton
-        android:id="@+id/backBtn"
-        android:layout_width="@dimen/search_view_text_padding"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?android:attr/selectableItemBackground"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:scaleType="center"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_arrow_back_grey_24dp"
-        android:contentDescription="@string/search_back_btn" />
-
-    <ImageButton
-        android:id="@+id/searchBtn"
-        android:layout_width="@dimen/search_view_text_padding"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?android:attr/selectableItemBackground"
-        android:contentDescription="@string/search_close_btn"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:scaleType="center"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_search_grey_24dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="@dimen/search_view_text_padding_left"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="@string/search_back_btn"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:scaleType="center"
+            app:srcCompat="@drawable/ic_arrow_back_grey_24dp" />
+
+        <EditText
+            android:id="@+id/searchEdit"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@null"
+            android:hint="@string/search_text_hint"
+            android:imeOptions="actionSearch"
+            android:inputType="number"
+            android:paddingEnd="@dimen/search_view_text_padding_right"
+            android:paddingLeft="@dimen/search_view_text_padding_left"
+            android:paddingRight="@dimen/search_view_text_padding_right"
+            android:paddingStart="@dimen/search_view_text_padding_left"
+            android:singleLine="true"
+            android:textColor="#212121"
+            android:textColorHint="#727272"
+            android:textSize="16sp" />
+
+        <ImageButton
+            android:id="@+id/closeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?actionBarItemBackground"
+            android:paddingLeft="@dimen/search_view_close_btn_horizontal_padding"
+            android:paddingRight="@dimen/search_view_close_btn_horizontal_padding"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/search_view_btn_width"
+            android:layout_marginEnd="@dimen/search_view_btn_width"
+            android:scaleType="center"
+            app:srcCompat="@drawable/ic_close_grey_24dp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="24dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/search_view_btn_width"
+            android:layout_marginRight="@dimen/search_view_btn_width"
+            android:background="@color/material_grey_400" />
+
+        <ImageButton
+            android:id="@+id/searchBtn"
+            android:layout_width="@dimen/search_view_btn_width"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="@string/search_close_btn"
+            android:paddingLeft="@dimen/search_view_btn_horizontal_padding"
+            android:paddingRight="@dimen/search_view_btn_horizontal_padding"
+            android:scaleType="center"
+            app:srcCompat="@drawable/ic_search_grey_24dp" />
+    </RelativeLayout>
+
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
@@ -106,6 +141,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        android:visibility="gone"/>
 
 </android.support.constraint.ConstraintLayout>
