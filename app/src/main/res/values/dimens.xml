@@ -5,4 +5,6 @@
     <dimen name="article_recycle_item_margin">16dp</dimen>
     <dimen name="activity_horizontal_padding">16dp</dimen>
     <dimen name="activity_vertical_padding">8dp</dimen>
+
+    <dimen name="search_view_text_padding">65dp</dimen>
 </resources>

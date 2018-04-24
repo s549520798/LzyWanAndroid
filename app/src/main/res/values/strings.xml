@@ -35,4 +35,10 @@
     <string name="article_item_text_type">分类:</string>
     <string name="article_item_text_date">时间:</string>
     <string name="empty_page">页面为空</string>
+
+    <!-- Strings related to SearchActivity -->
+    <string name="search_text_hint">搜索</string>
+    <string name="search_back_btn">返回按钮</string>
+    <string name="search_close_btn">清空输入</string>
+
 </resources>

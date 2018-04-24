@@ -18,11 +18,11 @@
         <item
             android:id="@+id/drawer_nav_menu_report_issue"
             android:icon="@drawable/ic_bug_report_grey_24dp"
-            android:title="@string/left_nav_about" />
+            android:title="@string/left_nav_bug_report" />
         <item
             android:id="@+id/drawer_nav_menu_about"
             android:icon="@drawable/ic_information_grey_24dp"
-            android:title="@string/left_nav_bug_report" />
+            android:title="@string/left_nav_about" />
 
     </group>
     <group android:id="@+id/menu_group_logout"
