@@ -29,20 +29,13 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     private static final String TAG = "LoginActivity";
     private LoginContract.Presenter mLoginPresenter;
-    @BindView(R.id.toolbar)
-    Toolbar mToolbar;
-    @BindView(R.id.nestedScrollView)
-    NestedScrollView mScrollView;
-    @BindView(R.id.textInputLayout)
-    TextInputLayout mUserNameView;
-    @BindView(R.id.textInputLayout2)
-    TextInputLayout mPasswordView;
-    @BindView(R.id.button_login)
-    Button mBtnLogin;
-    @BindView(R.id.textView)
-    TextView mTvRegister;
-    @BindView(R.id.progressBar)
-    ProgressBar mProgressBar;
+    @BindView(R.id.toolbar) Toolbar mToolbar;
+    @BindView(R.id.nestedScrollView) NestedScrollView mScrollView;
+    @BindView(R.id.textInputLayout) TextInputLayout mUserNameView;
+    @BindView(R.id.textInputLayout2) TextInputLayout mPasswordView;
+    @BindView(R.id.button_login) Button mBtnLogin;
+    @BindView(R.id.textView) TextView mTvRegister;
+    @BindView(R.id.progressBar) ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +77,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Override
     public void showMessage(String msg) {
-        LzyToast.showMessage(msg,1500);
+        LzyToast.showMessage(msg, 1500);
     }
 
     @Override

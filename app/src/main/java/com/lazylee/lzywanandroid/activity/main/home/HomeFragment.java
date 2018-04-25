@@ -46,20 +46,13 @@ public class HomeFragment extends Fragment implements HomeContarct.View, SwipeRe
     private int mPage = 0;
     private boolean mIsStateViewShow;
 
-    @BindView(R.id.recycle_home_frag)
-    RecyclerView mRecyclerView;
-    @BindView(R.id.state_layout_root)
-    ConstraintLayout mStateView;
-    @BindView(R.id.state_image)
-    ImageView mEmptyImage;
-    @BindView(R.id.state_load_again)
-    TextView mTvLoadAgain;
-    @BindView(R.id.state_progress_bar)
-    ProgressBar mStateProgressBar;
-    @BindView(R.id.refresh_home_frag)
-    AppbarRefreshLayout mRefreshLayout;
-    @BindDrawable(R.drawable.ripple_text_bg)
-    Drawable drawable;
+    @BindView(R.id.recycle_home_frag) RecyclerView mRecyclerView;
+    @BindView(R.id.state_layout_root) ConstraintLayout mStateView;
+    @BindView(R.id.state_image) ImageView mEmptyImage;
+    @BindView(R.id.state_load_again) TextView mTvLoadAgain;
+    @BindView(R.id.state_progress_bar) ProgressBar mStateProgressBar;
+    @BindView(R.id.refresh_home_frag) AppbarRefreshLayout mRefreshLayout;
+    @BindDrawable(R.drawable.ripple_text_bg) Drawable drawable;
 
     public HomeFragment() {
         // Required empty public constructor

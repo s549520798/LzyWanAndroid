@@ -29,14 +29,10 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     private static final String TAG = "MainActivity";
     private MainContract.Presenter mPresenter;
 
-    @BindView(R.id.main_bottom_nav)
-    BottomNavigationView mBottomNav;
-    @BindView(R.id.toolbar)
-    Toolbar mToolBar;
-    @BindView(R.id.main_drawer)
-    DrawerLayout mDrawerLayout;
-    @BindView(R.id.main_left_nav)
-    NavigationView mLeftNav;
+    @BindView(R.id.main_bottom_nav) BottomNavigationView mBottomNav;
+    @BindView(R.id.toolbar) Toolbar mToolBar;
+    @BindView(R.id.main_drawer) DrawerLayout mDrawerLayout;
+    @BindView(R.id.main_left_nav) NavigationView mLeftNav;
 
 
     @Override

@@ -11,4 +11,10 @@
     <dimen name="search_view_btn_width">50dp</dimen>
     <dimen name="search_view_btn_horizontal_padding">12dp</dimen>
     <dimen name="search_view_close_btn_horizontal_padding">8dp</dimen>
+
+    <!--Dimens related to LazChip  -->
+    <dimen name="chip_height">32dp</dimen>
+    <dimen name="chip_radius">16dp</dimen>
+    <dimen name="chip_horizontal_padding">12dp</dimen>
+    <dimen name="chip_icon_horizontal_margin">8dp</dimen>
 </resources>

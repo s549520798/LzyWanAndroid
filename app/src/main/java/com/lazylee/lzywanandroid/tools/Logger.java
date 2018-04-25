@@ -16,17 +16,17 @@ public class Logger {
 
     private static final String TAG = "Logger";
     private static final boolean DEBUG = BuildConfig.DEBUG;
-    private static void e(@NonNull String tag, @Nullable Object text) {
+    public static void e(@NonNull String tag, @Nullable Object text) {
         if (!DEBUG) return;
         Log.e(tag, text != null ? text.toString() : "LOGGER IS NULL");//avoid null
     }
 
-    private static void d(@NonNull String tag, @Nullable Object text) {
+    public static void d(@NonNull String tag, @Nullable Object text) {
         if (!DEBUG) return;
         Log.d(tag, text != null ? text.toString() : "LOGGER IS NULL");//avoid null
     }
 
-    private static void i(@NonNull String tag, @Nullable Object text) {
+    public static void i(@NonNull String tag, @Nullable Object text) {
         if (!DEBUG) return;
         Log.i(tag, text != null ? text.toString() : "LOGGER IS NULL");//avoid null
     }

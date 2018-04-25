@@ -24,20 +24,13 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
     private static final String TAG = "RegisterActivity";
     private RegisterContract.Presenter mRegisterPresenter;
 
-    @BindView(R.id.register_toobar)
-    Toolbar mToolBar;
-    @BindView(R.id.register_scroll)
-    NestedScrollView mScrollView;
-    @BindView(R.id.register_prgress)
-    ProgressBar mProgressBar;
-    @BindView(R.id.register_username)
-    TextInputLayout mUserNameView;
-    @BindView(R.id.register_password)
-    TextInputLayout mPasswordView;
-    @BindView(R.id.register_repassword)
-    TextInputLayout mRepasswordView;
-    @BindView(R.id.button_register)
-    Button mBtnRegister;
+    @BindView(R.id.register_toobar) Toolbar mToolBar;
+    @BindView(R.id.register_scroll) NestedScrollView mScrollView;
+    @BindView(R.id.register_prgress) ProgressBar mProgressBar;
+    @BindView(R.id.register_username) TextInputLayout mUserNameView;
+    @BindView(R.id.register_password) TextInputLayout mPasswordView;
+    @BindView(R.id.register_repassword) TextInputLayout mRepasswordView;
+    @BindView(R.id.button_register) Button mBtnRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

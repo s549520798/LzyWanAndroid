@@ -58,9 +58,11 @@
             android:layout_marginRight="@dimen/search_view_btn_width"
             android:layout_marginEnd="@dimen/search_view_btn_width"
             android:scaleType="center"
-            app:srcCompat="@drawable/ic_close_grey_24dp" />
+            app:srcCompat="@drawable/ic_close_grey_24dp"
+            android:contentDescription="@string/search_close_btn" />
 
         <View
+            android:id="@+id/dividerView"
             android:layout_width="1dp"
             android:layout_height="24dp"
             android:layout_alignParentEnd="true"
@@ -77,7 +79,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="@string/search_close_btn"
+            android:contentDescription="@string/search_btn"
             android:paddingLeft="@dimen/search_view_btn_horizontal_padding"
             android:paddingRight="@dimen/search_view_btn_horizontal_padding"
             android:scaleType="center"
@@ -125,7 +127,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_hotkey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+        </android.support.v7.widget.RecyclerView>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView

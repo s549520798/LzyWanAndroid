@@ -38,5 +38,8 @@ public interface WanAndroidService {
     Observable<List<CommonWebsite>> getCommonWebsites();
 
     @GET("/hotkey/json")
-    Observable<List<HotKey>> getHotKeys();
+    Observable<ServiceResult<List<HotKey>>> getHotKeys();
+
+    @POST("/article/query/{page}/json")
+    Observable<ServiceResult<Page>> search(@Path("page") int page, @Query("k") String k);
 }
