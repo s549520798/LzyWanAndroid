@@ -18,6 +18,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.lazylee.lzywanandroid.R;
+import com.lazylee.lzywanandroid.tools.Logger;
 
 /**
  * chip holds hot key
@@ -68,7 +69,6 @@ public class LzyChip extends FrameLayout {
     }
 
     private void initTypeArray(AttributeSet attrs) {
-        Log.d(TAG, "initTypeArray: ");
         TypedArray a = getContext().getTheme()
                 .obtainStyledAttributes(attrs, R.styleable.LzyChip, 0, 0);
         mText = a.getString(R.styleable.LzyChip_setText);
@@ -76,21 +76,17 @@ public class LzyChip extends FrameLayout {
                 ContextCompat.getColor(getContext(), R.color.colorChipBackground));
         mTextColor = a.getColor(R.styleable.LzyChip_setTextColor,
                 ContextCompat.getColor(getContext(), R.color.colorChipText));
-        if (!isCreated) {
-            buildView();
-        }
         a.recycle();
     }
 
     private void buildView() {
-        Log.d(TAG, "buildView: ");
         initBackgroundColor();
         initTextView();
         isCreated = true;
     }
 
     private void initBackgroundColor() {
-        Log.d(TAG, "initBackgroundColor: ");
+        Logger.d(TAG, "initBackgroundColor: ");
         float mRadius = getResources().getDimension(R.dimen.chip_radius);
         GradientDrawable bgDrawable = new GradientDrawable();
         bgDrawable.setShape(GradientDrawable.RECTANGLE);
@@ -102,10 +98,11 @@ public class LzyChip extends FrameLayout {
         } else {
             setBackgroundDrawable(bgDrawable);
         }
+        setClickable(true);
     }
 
     private void initTextView() {
-        Log.d(TAG, "initText: ");
+        Logger.d(TAG, "initText: ");
         if (!ViewCompat.isAttachedToWindow(this)) {
             return;
         }
@@ -125,25 +122,22 @@ public class LzyChip extends FrameLayout {
                 0
         );
         mTextView.setLayoutParams(chipTextParams);
+        mTextView.setSingleLine(true);
         mTextView.setTextColor(mTextColor);
         mTextView.setText(mText);
-        Log.d(TAG, "initText: add text view");
+        Logger.d(TAG, "initText: add text view");
         this.removeView(mTextView);
         this.addView(mTextView);
     }
 
     public void setChipText(String text) {
         mText = text;
-        if (mTextView == null){
-            Log.d(TAG, "setChipText: mTextView == null" );
-            return;
-        }
-        mTextView.setText(mText);
+        //mTextView.setText(mText);  不能在这里设置setText，此时mTextView还为空。
     }
 
     public void setChipText(@StringRes int id) {
         mText = getResources().getString(id);
-        mTextView.setText(mText);
+        //mTextView.setText(mText);
     }
 
 

@@ -24,7 +24,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View,
-        BottomNavigationView.OnNavigationItemSelectedListener{
+        BottomNavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "MainActivity";
     private MainContract.Presenter mPresenter;
@@ -119,26 +119,24 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         }
         return false;
     }
+
     NavigationView.OnNavigationItemSelectedListener itemSelectedListener =
-            new NavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()){
-                case R.id.drawer_nav_menu_tree:
-                    showMessage("知识体系");
-                    return true;
-                case R.id.drawer_nav_menu_tools:
-                    showMessage("常用工具");
-                    return true;
-                case R.id.drawer_nav_menu_about:
-                    showMessage("关于");
-                    return true;
-                case R.id.drawer_nav_menu_report_issue:
-                    showMessage("提交bug");
-                    return true;
-            }
-            return false;
-        }
-    };
+            item -> {
+                switch (item.getItemId()) {
+                    case R.id.drawer_nav_menu_tree:
+                        showMessage("知识体系");
+                        return true;
+                    case R.id.drawer_nav_menu_tools:
+                        LzyToast.showError("常用工具", 1500);
+                        return true;
+                    case R.id.drawer_nav_menu_about:
+                        LzyToast.showAlert("关于", 1500);
+                        return true;
+                    case R.id.drawer_nav_menu_report_issue:
+                        showMessage("提交bug");
+                        return true;
+                }
+                return false;
+            };
 
 }

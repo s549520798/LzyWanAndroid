@@ -66,7 +66,7 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
                 Logger.d(TAG, "onTextChanged : s = " + s + "s.length = " + s.length());
                 if (s.length() == 0) {
                     showSearchAndCloseBtn(false);
-                } else if (s.length() == 1) {
+                } else if (s.length() >= 1) {
                     showSearchAndCloseBtn(true);
                 }
             }
@@ -81,10 +81,11 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
         mSearchView.setOnClickListener(this);
 
         mHotKeyAdapter = new HotKeyAdapter();
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 4);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
         mHotKeyView.setLayoutManager(gridLayoutManager);
         mHotKeyView.setAdapter(mHotKeyAdapter);
         mHotKeyView.setHasFixedSize(true);
+
     }
 
     @Override
@@ -94,6 +95,7 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
     }
 
     private void setSearchBarElevation() {
+        // NOTE : elevation 设置失效问题， 要给控件或者layout设置background
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             mSearchView.setElevation(4);
         }
