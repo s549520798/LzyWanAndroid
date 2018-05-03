@@ -7,12 +7,15 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.lazylee.lzywanandroid.R;
 import com.lazylee.lzywanandroid.adapter.HotKeyAdapter;
@@ -75,6 +78,15 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
             public void afterTextChanged(Editable s) {
                 Logger.d(TAG, "afterTextChanged : s = " + s);
             }
+        });
+        //响应soft keyboard  中“搜索”按钮的点击
+        mSearchEdit.setOnEditorActionListener((v, actionId, event) -> {
+            boolean handled = false;
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                mPresenter.search(v.getText().toString());
+                handled = true;
+            }
+            return handled;
         });
         mCloseBtn.setOnClickListener(this);
         mBackBtn.setOnClickListener(this);

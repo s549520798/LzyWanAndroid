@@ -24,7 +24,7 @@
             android:background="@null"
             android:hint="@string/search_text_hint"
             android:imeOptions="actionSearch"
-            android:inputType="text"
+            android:inputType="text|textAutoCorrect"
             android:paddingEnd="@dimen/search_view_text_padding_right"
             android:paddingLeft="@dimen/search_view_text_padding_left"
             android:paddingRight="@dimen/search_view_text_padding_right"

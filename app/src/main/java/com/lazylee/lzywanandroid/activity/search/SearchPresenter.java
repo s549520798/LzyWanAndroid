@@ -1,5 +1,6 @@
 package com.lazylee.lzywanandroid.activity.search;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 
 import com.lazylee.lzywanandroid.adapter.HotKeyAdapter;
@@ -30,7 +31,13 @@ public class SearchPresenter implements SearchContract.Presenter {
     }
 
     @Override
-    public void search(String s) {
+    public void search(@NonNull String s) {
+        mView.showMessage("search action clicked : " + s);
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Api.API_BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
 
     }
 
