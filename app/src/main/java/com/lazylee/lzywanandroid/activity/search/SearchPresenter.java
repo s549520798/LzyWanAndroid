@@ -42,7 +42,7 @@ public class SearchPresenter implements SearchContract.Presenter {
     }
 
     @Override
-    public void getHotKey(final RecyclerView.Adapter adapter) {
+    public void getHotKey() {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Api.API_BASE_URL)
@@ -65,8 +65,9 @@ public class SearchPresenter implements SearchContract.Presenter {
                             mView.showMessage(listServiceResult.getErrorMsg());
                         } else {
                             List<HotKey> hotKeys = listServiceResult.getData();
-                            if (adapter instanceof HotKeyAdapter) {
-                                ((HotKeyAdapter) adapter).addHotkeys(hotKeys);
+                            for (HotKey hotkey : hotKeys
+                                    ) {
+                                mView.addChip(hotkey.getName());
                             }
                         }
                     }

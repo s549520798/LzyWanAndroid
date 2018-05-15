@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 
+import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.lazylee.lzywanandroid.R;
 import com.lazylee.lzywanandroid.adapter.HotKeyAdapter;
@@ -104,8 +105,7 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
         mBackBtn.setOnClickListener(this);
         mSearchView.setOnClickListener(this);
 
-        mHotKeyAdapter = new HotKeyAdapter();
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
+
         mHotKeyView.setSingleSelection(true);
 
     }
@@ -113,7 +113,7 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
     @Override
     protected void onStart() {
         super.onStart();
-        mPresenter.getHotKey(mHotKeyAdapter);
+        mPresenter.getHotKey();
     }
 
     private void setSearchBarElevation() {
@@ -162,6 +162,13 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
     @Override
     public void showResultView(boolean show) {
         showOptionsView(!show);
+    }
+
+    @Override
+    public void addChip(String chipText) {
+        Chip chip = (Chip) getLayoutInflater().inflate(R.layout.recycle_hotkey_item, mHotKeyView, false);
+        chip.setChipText(chipText);
+        mHotKeyView.addView(chip);
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.lazylee.lzywanandroid.activity.search;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.chip.Chip;
 import com.lazylee.lzywanandroid.mvp.BasePresenter;
 import com.lazylee.lzywanandroid.mvp.BaseView;
 
@@ -33,13 +34,15 @@ public interface SearchContract {
          * @param show true 表示显示； false 表示隐藏
          */
         void showResultView(boolean show);
+
+        void addChip(String chip);
     }
 
     interface Presenter extends BasePresenter {
 
         void search(String s);
 
-        void getHotKey(androidx.recyclerview.widget.RecyclerView.Adapter adapter);
+        void getHotKey();
 
         void getSearchHistory();
     }
