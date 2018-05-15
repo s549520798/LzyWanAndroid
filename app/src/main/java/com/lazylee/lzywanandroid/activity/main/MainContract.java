@@ -1,7 +1,7 @@
 package com.lazylee.lzywanandroid.activity.main;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.lazylee.lzywanandroid.mvp.BasePresenter;
 import com.lazylee.lzywanandroid.mvp.BaseView;
@@ -22,10 +22,10 @@ public interface MainContract {
     }
 
     interface Presenter extends BasePresenter {
-        void onFragmentChanged(FragmentManager manager, int type);
+        void onFragmentChanged(androidx.fragment.app.FragmentManager manager, int type);
 
-        void addAndHideFragment(FragmentManager manager, Fragment toAdd, Fragment toHide);
+        void addAndHideFragment(androidx.fragment.app.FragmentManager manager, androidx.fragment.app.Fragment toAdd, Fragment toHide);
 
-        void showAndHideFragment(FragmentManager manager, Fragment toShow, Fragment toHide);
+        void showAndHideFragment(androidx.fragment.app.FragmentManager manager, androidx.fragment.app.Fragment toShow, Fragment toHide);
     }
 }

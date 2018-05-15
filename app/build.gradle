@@ -2,25 +2,33 @@ apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 'android-P'
     defaultConfig {
         applicationId "com.lazylee.lzywanandroid"
         minSdkVersion 15
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+
+
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            debuggable false
+        }
     }
     compileOptions {
-    targetCompatibility 1.8
-        sourceCompatibility 1.8
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+    buildToolsVersion '27.0.3'
+    productFlavors {
     }
 }
 greendao {
@@ -30,11 +38,11 @@ greendao {
 }
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "com.android.support:appcompat-v7:${supportLibraryVersion}"
-    implementation "com.android.support:support-vector-drawable:${supportLibraryVersion}"
-    implementation "com.android.support:support-v4:${supportLibraryVersion}"
-    implementation "com.android.support:design:${supportLibraryVersion}"
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
+    implementation 'androidx.vectordrawable:vectordrawable:1.0.0-alpha1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0-alpha1'
+    implementation 'com.google.android.material:material:1.0.0-alpha1'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.0'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
     implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
     implementation "com.squareup.retrofit2:retrofit:${retrofitVersion}"
@@ -42,12 +50,8 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}"
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation 'com.google.code.gson:gson:2.8.2'
-    implementation "com.jakewharton:butterknife:${butterKnifeVersion}"
     implementation 'org.greenrobot:greendao:3.2.2'
-    // add library
-    //implementation 'com.android.support:multidex:1.0.3'
-    annotationProcessor "com.jakewharton:butterknife-compiler:${butterKnifeVersion}"
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha1'
 }

@@ -4,44 +4,47 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.widget.NestedScrollView;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+
+import com.google.android.material.textfield.TextInputLayout;
+
+import androidx.core.widget.NestedScrollView;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
+
+import androidx.appcompat.widget.Toolbar;
+
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import com.lazylee.lzywanandroid.R;
 import com.lazylee.lzywanandroid.activity.register.RegisterActivity;
 import com.lazylee.lzywanandroid.view.LzyToast;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 public class LoginActivity extends AppCompatActivity implements LoginContract.View, View.OnClickListener {
 
     private static final String TAG = "LoginActivity";
     private LoginContract.Presenter mLoginPresenter;
-    @BindView(R.id.toolbar) Toolbar mToolbar;
-    @BindView(R.id.nestedScrollView) NestedScrollView mScrollView;
-    @BindView(R.id.textInputLayout) TextInputLayout mUserNameView;
-    @BindView(R.id.textInputLayout2) TextInputLayout mPasswordView;
-    @BindView(R.id.button_login) Button mBtnLogin;
-    @BindView(R.id.textView) TextView mTvRegister;
-    @BindView(R.id.progressBar) ProgressBar mProgressBar;
+    private Toolbar mToolbar;
+    private NestedScrollView mScrollView;
+    private TextInputLayout mUserNameView;
+    private TextInputLayout mPasswordView;
+    private Button mBtnLogin;
+    private TextView mTvRegister;
+    private ProgressBar mProgressBar;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
-        ButterKnife.bind(this);
+        initViews();
         mLoginPresenter = new LoginPresenter(this);
         setSupportActionBar(mToolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -53,6 +56,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         mTvRegister.setOnClickListener(this);
         mPasswordView.setPasswordVisibilityToggleEnabled(true);
     }
+
 
     @Override
     public void setPresenter(LoginContract.Presenter presenter) {
@@ -116,5 +120,15 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     public void enableLoginButton(boolean enable) {
         mBtnLogin.setEnabled(enable);
         mBtnLogin.setTextColor(enable ? Color.WHITE : Color.GRAY);
+    }
+
+    private void initViews() {
+        mToolbar = findViewById(R.id.toolbar);
+        mScrollView = findViewById(R.id.nestedScrollView);
+        mUserNameView = findViewById(R.id.textInputLayout);
+        mPasswordView = findViewById(R.id.textInputLayout2);
+        mBtnLogin = findViewById(R.id.button_login);
+        mTvRegister = findViewById(R.id.textView);
+        mProgressBar = findViewById(R.id.progressBar);
     }
 }

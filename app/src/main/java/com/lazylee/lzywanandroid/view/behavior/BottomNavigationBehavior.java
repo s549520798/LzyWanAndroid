@@ -1,8 +1,8 @@
 package com.lazylee.lzywanandroid.view.behavior;
 
 import android.content.Context;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.CoordinatorLayout;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 

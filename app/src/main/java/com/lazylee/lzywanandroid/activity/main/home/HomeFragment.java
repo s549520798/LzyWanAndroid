@@ -4,12 +4,12 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,12 +27,9 @@ import com.lazylee.lzywanandroid.view.divider.ArticleRecycleDivider;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindDrawable;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A simple {@link androidx.fragment.app.Fragment} subclass.
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
@@ -46,13 +43,13 @@ public class HomeFragment extends Fragment implements HomeContarct.View, SwipeRe
     private int mPage = 0;
     private boolean mIsStateViewShow;
 
-    @BindView(R.id.recycle_home_frag) RecyclerView mRecyclerView;
-    @BindView(R.id.state_layout_root) ConstraintLayout mStateView;
-    @BindView(R.id.state_image) ImageView mEmptyImage;
-    @BindView(R.id.state_load_again) TextView mTvLoadAgain;
-    @BindView(R.id.state_progress_bar) ProgressBar mStateProgressBar;
-    @BindView(R.id.refresh_home_frag) AppbarRefreshLayout mRefreshLayout;
-    @BindDrawable(R.drawable.ripple_text_bg) Drawable drawable;
+    private RecyclerView mRecyclerView;
+    private ConstraintLayout mStateView;
+    private ImageView mEmptyImage;
+    private TextView mTvLoadAgain;
+    private ProgressBar mStateProgressBar;
+    private AppbarRefreshLayout mRefreshLayout;
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -82,7 +79,12 @@ public class HomeFragment extends Fragment implements HomeContarct.View, SwipeRe
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View mRootView = inflater.inflate(R.layout.home_fragment, container, false);
-        ButterKnife.bind(this, mRootView);
+        mRecyclerView = mRootView.findViewById(R.id.recycle_home_frag);
+        mStateView = mRootView.findViewById(R.id.state_layout_root);
+        mEmptyImage = mRootView.findViewById(R.id.state_image);
+        mTvLoadAgain = mRootView.findViewById(R.id.state_load_again);
+        mStateProgressBar = mRootView.findViewById(R.id.state_progress_bar);
+        mRefreshLayout = mRootView.findViewById(R.id.refresh_home_frag);
         return mRootView;
     }
 

@@ -11,12 +11,12 @@
             android:id="@+id/refresh_home_frag"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycle_home_frag"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-            </android.support.v7.widget.RecyclerView>
+            </androidx.recyclerview.widget.RecyclerView>
         </com.lazylee.lzywanandroid.view.AppbarRefreshLayout>
     </RelativeLayout>
     <include layout="@layout/state_layout" />

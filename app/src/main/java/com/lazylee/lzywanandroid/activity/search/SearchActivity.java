@@ -2,12 +2,11 @@ package com.lazylee.lzywanandroid.activity.search;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
@@ -15,15 +14,15 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
+
+import com.google.android.material.chip.ChipGroup;
 import com.lazylee.lzywanandroid.R;
 import com.lazylee.lzywanandroid.adapter.HotKeyAdapter;
 import com.lazylee.lzywanandroid.tools.Logger;
 import com.lazylee.lzywanandroid.view.LzyToast;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+
 
 public class SearchActivity extends AppCompatActivity implements SearchContract.View, View.OnClickListener {
 
@@ -36,24 +35,37 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
     private boolean isOptionsViewShowing = false;
     private boolean isResultViewShowing = false;
 
-    @BindView(R.id.searchView) RelativeLayout mSearchView;
-    @BindView(R.id.backBtn) ImageButton mBackBtn;
-    @BindView(R.id.closeBtn) ImageButton mCloseBtn;
-    @BindView(R.id.searchBtn) ImageButton mSearchBtn;
-    @BindView(R.id.dividerView) View mDividerView;
-    @BindView(R.id.progressBar) ProgressBar mProgressBar;
-    @BindView(R.id.recycler_result) RecyclerView mResultView;
-    @BindView(R.id.recycler_hotkey) RecyclerView mHotKeyView;
-    @BindView(R.id.recycler_history) RecyclerView mHistoryView;
-    @BindView(R.id.search_options) LinearLayout mOptionsView;
-    @BindView(R.id.searchEdit) EditText mSearchEdit;
+    private RelativeLayout mSearchView;
+    private ImageButton mBackBtn;
+    private ImageButton mCloseBtn;
+    private ImageButton mSearchBtn;
+    private View mDividerView;
+    private ProgressBar mProgressBar;
+    private RecyclerView mResultView;
+    private ChipGroup mHotKeyView;
+    private RecyclerView mHistoryView;
+    private LinearLayout mOptionsView;
+    private EditText mSearchEdit;
 
+    private void initViews(){
+        mSearchView = findViewById(R.id.searchView);
+        mBackBtn = findViewById(R.id.backBtn);
+        mCloseBtn = findViewById(R.id.closeBtn);
+        mSearchBtn = findViewById(R.id.searchBtn);
+        mDividerView = findViewById(R.id.dividerView);
+        mProgressBar = findViewById(R.id.progressBar);
+        mResultView = findViewById(R.id.recycler_result);
+        mHotKeyView = findViewById(R.id.reflow_group);
+        mHistoryView = findViewById(R.id.recycler_history);
+        mOptionsView = findViewById(R.id.search_options);
+        mSearchEdit = findViewById(R.id.searchEdit);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_activity);
-        ButterKnife.bind(this);
+        initViews();
         setPresenter(new SearchPresenter(this));
         showSearchAndCloseBtn(false);
         showOptionsView(true);
@@ -94,9 +106,7 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
 
         mHotKeyAdapter = new HotKeyAdapter();
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
-        mHotKeyView.setLayoutManager(gridLayoutManager);
-        mHotKeyView.setAdapter(mHotKeyAdapter);
-        mHotKeyView.setHasFixedSize(true);
+        mHotKeyView.setSingleSelection(true);
 
     }
 

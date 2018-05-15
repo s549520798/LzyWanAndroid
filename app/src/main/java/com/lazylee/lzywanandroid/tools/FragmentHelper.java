@@ -1,9 +1,9 @@
 package com.lazylee.lzywanandroid.tools;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import java.util.List;
 
@@ -14,10 +14,10 @@ import java.util.List;
 
 public class FragmentHelper {
 
-    public static Fragment getCurrentVisibleFragment(@NonNull FragmentManager manager){
-        List<Fragment> fragments = manager.getFragments();
+    public static androidx.fragment.app.Fragment getCurrentVisibleFragment(@NonNull androidx.fragment.app.FragmentManager manager){
+        List<androidx.fragment.app.Fragment> fragments = manager.getFragments();
         if (fragments != null && !fragments.isEmpty()) {
-            for (Fragment fragment : fragments) {
+            for (androidx.fragment.app.Fragment fragment : fragments) {
                 if (fragment != null && fragment.isVisible()) {
                     return fragment;
                 }
@@ -27,7 +27,7 @@ public class FragmentHelper {
     }
 
     @Nullable
-    public static Fragment getFragmentByTag(@NonNull FragmentManager fragmentManager, @NonNull String tag) {
+    public static Fragment getFragmentByTag(@NonNull androidx.fragment.app.FragmentManager fragmentManager, @NonNull String tag) {
         return fragmentManager.findFragmentByTag(tag);
     }
 }

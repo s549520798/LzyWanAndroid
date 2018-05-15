@@ -1,27 +1,28 @@
 package com.lazylee.lzywanandroid.activity.main;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+
+import androidx.annotation.NonNull;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
+
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
+
 
 import com.lazylee.lzywanandroid.R;
 import com.lazylee.lzywanandroid.activity.main.home.HomeFragment;
 import com.lazylee.lzywanandroid.activity.search.SearchActivity;
 import com.lazylee.lzywanandroid.view.LzyToast;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View,
         BottomNavigationView.OnNavigationItemSelectedListener {
@@ -29,17 +30,17 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     private static final String TAG = "MainActivity";
     private MainContract.Presenter mPresenter;
 
-    @BindView(R.id.main_bottom_nav) BottomNavigationView mBottomNav;
-    @BindView(R.id.toolbar) Toolbar mToolBar;
-    @BindView(R.id.main_drawer) DrawerLayout mDrawerLayout;
-    @BindView(R.id.main_left_nav) NavigationView mLeftNav;
+    private BottomNavigationView mBottomNav;
+    private Toolbar mToolBar;
+    private DrawerLayout mDrawerLayout;
+    private NavigationView mLeftNav;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-        ButterKnife.bind(this);
+        initViews();
         mPresenter = new MainPresenter(this);
         setSupportActionBar(mToolBar);
         mBottomNav.setOnNavigationItemSelectedListener(this);
@@ -139,4 +140,10 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
                 return false;
             };
 
+    private void initViews() {
+        mBottomNav = findViewById(R.id.main_bottom_nav);
+        mToolBar = findViewById(R.id.toolbar);
+        mDrawerLayout = findViewById(R.id.main_drawer);
+        mLeftNav = findViewById(R.id.main_left_nav);
+    }
 }

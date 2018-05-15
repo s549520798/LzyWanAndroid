@@ -3,12 +3,17 @@ package com.lazylee.lzywanandroid.activity.register;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.graphics.Color;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.widget.NestedScrollView;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+
+import com.google.android.material.textfield.TextInputLayout;
+
+import androidx.core.widget.NestedScrollView;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+
+import androidx.appcompat.widget.Toolbar;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -16,27 +21,26 @@ import android.widget.ProgressBar;
 import com.lazylee.lzywanandroid.R;
 import com.lazylee.lzywanandroid.view.LzyToast;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class RegisterActivity extends AppCompatActivity implements RegisterContract.View {
 
     private static final String TAG = "RegisterActivity";
     private RegisterContract.Presenter mRegisterPresenter;
 
-    @BindView(R.id.register_toobar) Toolbar mToolBar;
-    @BindView(R.id.register_scroll) NestedScrollView mScrollView;
-    @BindView(R.id.register_prgress) ProgressBar mProgressBar;
-    @BindView(R.id.register_username) TextInputLayout mUserNameView;
-    @BindView(R.id.register_password) TextInputLayout mPasswordView;
-    @BindView(R.id.register_repassword) TextInputLayout mRepasswordView;
-    @BindView(R.id.button_register) Button mBtnRegister;
+    private Toolbar mToolBar;
+    private NestedScrollView mScrollView;
+    private ProgressBar mProgressBar;
+    private TextInputLayout mUserNameView;
+    private TextInputLayout mPasswordView;
+    private TextInputLayout mRepasswordView;
+    private Button mBtnRegister;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_activity);
-        ButterKnife.bind(this);
+        initViews();
         mRegisterPresenter = new RegisterPresenter(this);
         mToolBar.setTitleTextColor(Color.WHITE);
         setSupportActionBar(mToolBar);
@@ -55,6 +59,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
             }
         });
     }
+
 
     @Override
     public void setPresenter(RegisterContract.Presenter presenter) {
@@ -112,5 +117,17 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return super.onSupportNavigateUp();
+    }
+
+
+    private void initViews() {
+        mToolBar = findViewById(R.id.register_toobar);
+        mScrollView = findViewById(R.id.register_scroll);
+        mProgressBar = findViewById(R.id.register_prgress);
+        mUserNameView = findViewById(R.id.register_username);
+        mPasswordView = findViewById(R.id.register_password);
+        mRepasswordView = findViewById(R.id.register_repassword);
+        mBtnRegister = findViewById(R.id.button_register);
+
     }
 }

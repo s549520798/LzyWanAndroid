@@ -2,7 +2,7 @@ package com.lazylee.lzywanandroid.view;
 
 
 import android.content.Context;
-import android.support.annotation.LayoutRes;
+import androidx.annotation.LayoutRes;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;

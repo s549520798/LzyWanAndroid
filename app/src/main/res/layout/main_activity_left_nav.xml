@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.NavigationView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.navigation.NavigationView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="300dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_left_nav"
@@ -11,4 +11,4 @@
     app:headerLayout="@layout/drawer_nav_header"
     app:menu="@menu/drawer_nav_menu">
 
-</android.support.design.widget.NavigationView>
+</com.google.android.material.navigation.NavigationView>

@@ -1,15 +1,13 @@
 package com.lazylee.lzywanandroid.adapter.viewholder;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import com.lazylee.lzywanandroid.R;
 import com.lazylee.lzywanandroid.data.entity.Article;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * view holder for article adapter
@@ -18,19 +16,19 @@ import butterknife.ButterKnife;
 
 public class ArticleViewHolder extends RecyclerView.ViewHolder {
 
-    @BindView(R.id.article_item_author)
+    private static final String TAG = "ArticleViewHolder";
     TextView mAuthor;
-    @BindView(R.id.article_item_title)
     TextView mTitle;
-    @BindView(R.id.article_item_type)
     TextView mType;
-    @BindView(R.id.article_item_date)
     TextView mDate;
     private boolean isReaded;
 
     public ArticleViewHolder(View itemView) {
         super(itemView);
-        ButterKnife.bind(this,itemView);
+        mAuthor = itemView.findViewById(R.id.article_item_author);
+        mTitle = itemView.findViewById(R.id.article_item_title);
+        mType = itemView.findViewById(R.id.article_item_type);
+        mDate = itemView.findViewById(R.id.article_item_date);
     }
 
     public void bindView(@NonNull Article item){
