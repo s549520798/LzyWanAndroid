@@ -24,8 +24,8 @@ public interface MainContract {
     interface Presenter extends BasePresenter {
         void onFragmentChanged(androidx.fragment.app.FragmentManager manager, int type);
 
-        void addAndHideFragment(androidx.fragment.app.FragmentManager manager, androidx.fragment.app.Fragment toAdd, Fragment toHide);
+        void addAndHideFragment(FragmentManager manager, Fragment toAdd, Fragment toHide);
 
-        void showAndHideFragment(androidx.fragment.app.FragmentManager manager, androidx.fragment.app.Fragment toShow, Fragment toHide);
+        void showAndHideFragment(FragmentManager manager, Fragment toShow, Fragment toHide);
     }
 }

@@ -29,7 +29,7 @@ public class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void onFragmentChanged(FragmentManager manager, int type) {
-        androidx.fragment.app.Fragment currentFragment = getCurrentVisibleFragment(manager);
+        Fragment currentFragment = getCurrentVisibleFragment(manager);
         HomeFragment homeFragment = (HomeFragment) getFragmentByTag(manager, HomeFragment.TAG);
         GuideFragment guideFragment = (GuideFragment) getFragmentByTag(manager, GuideFragment.TAG);
         ProjectFragment projectFragment = (ProjectFragment) getFragmentByTag(manager, ProjectFragment.TAG);
@@ -62,7 +62,7 @@ public class MainPresenter implements MainContract.Presenter {
     }
 
     @Override
-    public void addAndHideFragment(FragmentManager manager, Fragment toAdd, androidx.fragment.app.Fragment toHide) {
+    public void addAndHideFragment(FragmentManager manager, Fragment toAdd, Fragment toHide) {
         toHide.onHiddenChanged(true);
         manager.beginTransaction()
                 .hide(toHide)
@@ -72,7 +72,7 @@ public class MainPresenter implements MainContract.Presenter {
     }
 
     @Override
-    public void showAndHideFragment(FragmentManager manager, androidx.fragment.app.Fragment toShow, Fragment toHide) {
+    public void showAndHideFragment(FragmentManager manager, Fragment toShow, Fragment toHide) {
         toHide.onHiddenChanged(true);
         manager.beginTransaction()
                 .hide(toHide)

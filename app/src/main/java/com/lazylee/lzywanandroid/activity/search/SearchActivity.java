@@ -3,7 +3,6 @@ package com.lazylee.lzywanandroid.activity.search;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -35,6 +34,7 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
     private boolean isCloseBtnShowing = true;
     private boolean isOptionsViewShowing = false;
     private boolean isResultViewShowing = false;
+    private boolean isHotKeyObtained = false;
 
     private RelativeLayout mSearchView;
     private ImageButton mBackBtn;
@@ -104,8 +104,6 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
         mCloseBtn.setOnClickListener(this);
         mBackBtn.setOnClickListener(this);
         mSearchView.setOnClickListener(this);
-
-
         mHotKeyView.setSingleSelection(true);
 
     }
@@ -113,7 +111,11 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
     @Override
     protected void onStart() {
         super.onStart();
-        mPresenter.getHotKey();
+        if (!isHotKeyObtained){
+            mPresenter.getHotKey();
+            isHotKeyObtained = true;
+        }
+
     }
 
     private void setSearchBarElevation() {

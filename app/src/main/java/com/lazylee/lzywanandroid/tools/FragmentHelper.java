@@ -14,10 +14,10 @@ import java.util.List;
 
 public class FragmentHelper {
 
-    public static androidx.fragment.app.Fragment getCurrentVisibleFragment(@NonNull androidx.fragment.app.FragmentManager manager){
-        List<androidx.fragment.app.Fragment> fragments = manager.getFragments();
+    public static Fragment getCurrentVisibleFragment(@NonNull FragmentManager manager){
+        List<Fragment> fragments = manager.getFragments();
         if (fragments != null && !fragments.isEmpty()) {
-            for (androidx.fragment.app.Fragment fragment : fragments) {
+            for (Fragment fragment : fragments) {
                 if (fragment != null && fragment.isVisible()) {
                     return fragment;
                 }
@@ -27,7 +27,7 @@ public class FragmentHelper {
     }
 
     @Nullable
-    public static Fragment getFragmentByTag(@NonNull androidx.fragment.app.FragmentManager fragmentManager, @NonNull String tag) {
+    public static Fragment getFragmentByTag(@NonNull FragmentManager fragmentManager, @NonNull String tag) {
         return fragmentManager.findFragmentByTag(tag);
     }
 }
