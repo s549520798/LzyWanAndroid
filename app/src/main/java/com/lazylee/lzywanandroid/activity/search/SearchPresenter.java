@@ -9,13 +9,16 @@ import androidx.annotation.NonNull;
 import com.lazylee.lzywanandroid.App;
 import com.lazylee.lzywanandroid.data.entity.HotKey;
 import com.lazylee.lzywanandroid.data.entity.Page;
+import com.lazylee.lzywanandroid.data.entity.SearchHistory;
 import com.lazylee.lzywanandroid.data.greendao.DaoSession;
 import com.lazylee.lzywanandroid.data.greendao.HotKeyDao;
+import com.lazylee.lzywanandroid.data.greendao.SearchHistoryDao;
 import com.lazylee.lzywanandroid.net.Api;
 import com.lazylee.lzywanandroid.net.ServiceResult;
 import com.lazylee.lzywanandroid.net.WanAndroidService;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import io.reactivex.Observer;
@@ -55,6 +58,8 @@ public class SearchPresenter implements SearchContract.Presenter {
     @Override
     public void search(@NonNull String s) {
         mView.showProgressBar(true);
+        SearchHistoryDao historyDao = App.getInstance().getDaoSession().getSearchHistoryDao();
+        historyDao.insertOrReplace(new SearchHistory(s,new Date().getTime()));
 //测试接口返回结果
 //        mView.showMessage("search action clicked : " + s);
 //                    new Thread(new Runnable() {
