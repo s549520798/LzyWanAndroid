@@ -3,6 +3,7 @@ package com.lazylee.lzywanandroid.activity.search;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,10 +19,15 @@ import android.widget.RelativeLayout;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.lazylee.lzywanandroid.R;
+import com.lazylee.lzywanandroid.adapter.ArticleAdapter;
 import com.lazylee.lzywanandroid.adapter.HotKeyAdapter;
+import com.lazylee.lzywanandroid.data.entity.Article;
+import com.lazylee.lzywanandroid.data.entity.Page;
 import com.lazylee.lzywanandroid.tools.Logger;
 import com.lazylee.lzywanandroid.view.LzyToast;
+import com.lazylee.lzywanandroid.view.divider.ArticleRecycleDivider;
 
+import java.util.ArrayList;
 
 
 public class SearchActivity extends AppCompatActivity implements SearchContract.View, View.OnClickListener {
@@ -47,6 +53,9 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
     private RecyclerView mHistoryView;
     private LinearLayout mOptionsView;
     private EditText mSearchEdit;
+
+    private ArticleAdapter mResultAdapter;
+    ArrayList<Article> articles = new ArrayList<>();
 
     private void initViews(){
         mSearchView = findViewById(R.id.searchView);
@@ -105,7 +114,11 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
         mBackBtn.setOnClickListener(this);
         mSearchView.setOnClickListener(this);
         mHotKeyView.setSingleSelection(true);
-
+        mResultAdapter = new ArticleAdapter(articles);
+        mResultView.setLayoutManager(new LinearLayoutManager(this));
+        mResultView.setAdapter(mResultAdapter);
+        mResultView.addItemDecoration(new ArticleRecycleDivider(getResources()
+                .getColor(R.color.colorRecycleDivider)));
     }
 
     @Override
@@ -174,6 +187,11 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
     }
 
     @Override
+    public void addSearchResult(Page page) {
+        mResultAdapter.updateArticles(page.getDatas());
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.backBtn:
@@ -184,6 +202,7 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
                 mSearchEdit.setText(null);
                 break;
             case R.id.searchBtn:
+
                 break;
             default:
                 break;

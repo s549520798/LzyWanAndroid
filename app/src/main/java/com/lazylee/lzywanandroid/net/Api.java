@@ -23,5 +23,9 @@ public class Api {
      * method : get;     param : 页码，拼接在连接中，从0开始;
      */
     public static final String API_ARTICLE = "http://www.wanandroid.com/article/list/0/json";
+    /**
+     * method post; param: k 关键词，
+     */
+    public static final String API_SEARCH = "http://www.wanandroid.com/article/query/0/json";
 }
 

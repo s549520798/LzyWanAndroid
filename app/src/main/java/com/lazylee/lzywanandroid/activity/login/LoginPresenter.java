@@ -51,35 +51,7 @@ public class LoginPresenter implements LoginContract.Presenter {
         }else {
             Log.d(TAG, "login: is login ");
             mLoginView.showProgressBar(true);
-//            new Thread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    OkHttpClient client = new OkHttpClient();
-//                    RequestBody body = new FormBody.Builder()
-//                            .add("username",userName)
-//                            .add("password",password)
-//                            .build();
-//                    Request request = new Request.Builder()
-//                            .url(Api.API_LOGIN)
-//                            .post(body)
-//                            .build();
-//                    Response response = null;
-//                    Message message = new Message();
-//                    try {
-//                        response = client.newCall(request).execute();
-//                        if(response.isSuccessful()){
-//                            String s = response.body().string();
-//                            ResponseBody responseBody = response.body();
-//
-//                        }else {
-//
-//                        }
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//
-//                }
-//            }).start();
+
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(Api.API_BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
