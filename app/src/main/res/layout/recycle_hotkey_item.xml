@@ -4,4 +4,6 @@
     style="@style/Widget.MaterialComponents.Chip.Choice"
     android:id="@+id/hot_key_chip"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"/>
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/activity_vertical_padding"
+    android:layout_marginRight="@dimen/activity_vertical_padding"/>

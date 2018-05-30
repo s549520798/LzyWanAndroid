@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 
 
 import com.lazylee.lzywanandroid.App;
+import com.lazylee.lzywanandroid.adapter.SearchHistoryAdapter;
 import com.lazylee.lzywanandroid.data.entity.HotKey;
 import com.lazylee.lzywanandroid.data.entity.Page;
 import com.lazylee.lzywanandroid.data.entity.SearchHistory;
@@ -58,6 +59,9 @@ public class SearchPresenter implements SearchContract.Presenter {
     @Override
     public void search(@NonNull String s) {
         mView.showProgressBar(true);
+        mView.showOptionsView(false);
+        mView.showResultView(false);
+        mView.showEmptyResultView(false);
         SearchHistoryDao historyDao = App.getInstance().getDaoSession().getSearchHistoryDao();
         historyDao.insertOrReplace(new SearchHistory(s,new Date().getTime()));
 //测试接口返回结果
@@ -102,18 +106,25 @@ public class SearchPresenter implements SearchContract.Presenter {
                     @Override
                     public void onNext(ServiceResult<Page> pageServiceResult) {
                         Page page = pageServiceResult.getData();
-                        mView.addSearchResult(page);
+                        Log.d(TAG, "onNext: page size" + page.getDatas().size());
+                        if (page == null || page.getDatas().size() == 0){
+                            mView.showEmptyResultView(true);
+                        }else {
+                            mView.addSearchResult(page);
+                            mView.showResultView(true);
+                        }
+
                     }
 
                     @Override
                     public void onError(Throwable e) {
+                        mView.showMessage(e.getMessage());
                         mView.showProgressBar(false);
                     }
 
                     @Override
                     public void onComplete() {
                         mView.showProgressBar(false);
-                        mView.showResultView(true);
                     }
                 });
     }
@@ -173,7 +184,9 @@ public class SearchPresenter implements SearchContract.Presenter {
     }
 
     @Override
-    public void getSearchHistory() {
-
+    public void getSearchHistory(SearchHistoryAdapter adapter) {
+        SearchHistoryDao historyDao = App.getInstance().getDaoSession().getSearchHistoryDao();
+        List<SearchHistory> histories = historyDao.loadAll();
+        adapter.updateHistories(histories);
     }
 }

@@ -56,7 +56,7 @@ public class HomePresenter implements HomeContarct.Presenter {
                                 mView.showStateView(false);
                             }
 
-                            adapter.updateArticles(page.getDatas());
+                            adapter.addArticles(page.getDatas());
                             mView.showUpLoadMore(false);
                         }
                     }

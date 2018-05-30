@@ -3,6 +3,7 @@ package com.lazylee.lzywanandroid.activity.search;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.chip.Chip;
+import com.lazylee.lzywanandroid.adapter.SearchHistoryAdapter;
 import com.lazylee.lzywanandroid.data.entity.Page;
 import com.lazylee.lzywanandroid.mvp.BasePresenter;
 import com.lazylee.lzywanandroid.mvp.BaseView;
@@ -36,6 +37,8 @@ public interface SearchContract {
          */
         void showResultView(boolean show);
 
+        void showEmptyResultView(boolean show);
+
         void addChip(String chip);
 
         void addSearchResult(Page page);
@@ -47,6 +50,6 @@ public interface SearchContract {
 
         void getHotKey();
 
-        void getSearchHistory();
+        void getSearchHistory(SearchHistoryAdapter adapter);
     }
 }

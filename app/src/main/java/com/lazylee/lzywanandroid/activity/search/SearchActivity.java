@@ -1,15 +1,20 @@
 package com.lazylee.lzywanandroid.activity.search;
 
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -21,6 +26,7 @@ import com.google.android.material.chip.ChipGroup;
 import com.lazylee.lzywanandroid.R;
 import com.lazylee.lzywanandroid.adapter.ArticleAdapter;
 import com.lazylee.lzywanandroid.adapter.HotKeyAdapter;
+import com.lazylee.lzywanandroid.adapter.SearchHistoryAdapter;
 import com.lazylee.lzywanandroid.data.entity.Article;
 import com.lazylee.lzywanandroid.data.entity.Page;
 import com.lazylee.lzywanandroid.tools.Logger;
@@ -28,6 +34,8 @@ import com.lazylee.lzywanandroid.view.LzyToast;
 import com.lazylee.lzywanandroid.view.divider.ArticleRecycleDivider;
 
 import java.util.ArrayList;
+
+import static com.lazylee.lzywanandroid.tools.StateHelper.hideSoftKeyboard;
 
 
 public class SearchActivity extends AppCompatActivity implements SearchContract.View, View.OnClickListener {
@@ -40,7 +48,9 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
     private boolean isCloseBtnShowing = true;
     private boolean isOptionsViewShowing = false;
     private boolean isResultViewShowing = false;
+    private boolean isEmptyResultShowing = false;
     private boolean isHotKeyObtained = false;
+    private boolean isHistoryObtained = false;
 
     private RelativeLayout mSearchView;
     private ImageButton mBackBtn;
@@ -53,11 +63,13 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
     private RecyclerView mHistoryView;
     private LinearLayout mOptionsView;
     private EditText mSearchEdit;
+    private FrameLayout mEmptyResultView;
 
     private ArticleAdapter mResultAdapter;
     ArrayList<Article> articles = new ArrayList<>();
+    private SearchHistoryAdapter mHistoryAdapter;
 
-    private void initViews(){
+    private void initViews() {
         mSearchView = findViewById(R.id.searchView);
         mBackBtn = findViewById(R.id.backBtn);
         mCloseBtn = findViewById(R.id.closeBtn);
@@ -69,6 +81,7 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
         mHistoryView = findViewById(R.id.recycler_history);
         mOptionsView = findViewById(R.id.search_options);
         mSearchEdit = findViewById(R.id.searchEdit);
+        mEmptyResultView = findViewById(R.id.empty_result_view);
     }
 
     @Override
@@ -106,6 +119,7 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
             boolean handled = false;
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 mPresenter.search(v.getText().toString());
+                hideSoftKeyboard(mSearchEdit);
                 handled = true;
             }
             return handled;
@@ -119,16 +133,31 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
         mResultView.setAdapter(mResultAdapter);
         mResultView.addItemDecoration(new ArticleRecycleDivider(getResources()
                 .getColor(R.color.colorRecycleDivider)));
+
+        mHistoryAdapter = new SearchHistoryAdapter();
+        mHistoryView.setLayoutManager(new LinearLayoutManager(this));
+        mHistoryView.setAdapter(mHistoryAdapter);
+        mHistoryView.addItemDecoration(new ArticleRecycleDivider(getResources()
+                .getColor(R.color.colorRecycleDivider)));
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        if (!isHotKeyObtained){
+        if (!isHotKeyObtained) {
             mPresenter.getHotKey();
             isHotKeyObtained = true;
         }
+        if (!isHistoryObtained){
+            mPresenter.getSearchHistory(mHistoryAdapter);
+            isHistoryObtained = true;
+        }
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     private void setSearchBarElevation() {
@@ -168,15 +197,20 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
         if (isOptionsViewShowing == show) return;
         mOptionsView.setVisibility(show ? View.VISIBLE : View.GONE);
         isOptionsViewShowing = show;
-
-        if (isResultViewShowing != show) return;
-        mResultView.setVisibility(show ? View.GONE : View.VISIBLE);
-        isResultViewShowing = !show;
     }
 
     @Override
     public void showResultView(boolean show) {
-        showOptionsView(!show);
+        if (isResultViewShowing == show) return;
+        mResultView.setVisibility(show ? View.VISIBLE : View.GONE);
+        isResultViewShowing = show;
+    }
+
+    @Override
+    public void showEmptyResultView(boolean show) {
+        if (isEmptyResultShowing == show) return;
+        mEmptyResultView.setVisibility(show ? View.VISIBLE : View.GONE);
+        isEmptyResultShowing = show;
     }
 
     @Override

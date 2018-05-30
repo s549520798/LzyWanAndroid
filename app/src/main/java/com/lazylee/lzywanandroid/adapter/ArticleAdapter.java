@@ -51,9 +51,19 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleViewHolder> {
             mList = new ArrayList<>();
             mList.addAll(articles);
         } else {
+            mList.clear();
             mList.addAll(articles);
         }
+        notifyDataSetChanged();
+    }
 
+    public void addArticles(@NonNull List<Article> articles){
+        if (mList == null) {
+            mList = new ArrayList<>();
+            mList.addAll(articles);
+        } else {
+            mList.addAll(articles);
+        }
         notifyDataSetChanged();
     }
 
