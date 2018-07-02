@@ -5,10 +5,10 @@
         android:id="@+id/menu_toolbar_history"
         android:icon="@drawable/ic_history_white_24dp"
         android:title="@string/toolbar_history"
-        app:showAsAction="ifRoom" />
+        android:showAsAction="ifRoom" />
     <item
         android:id="@+id/menu_toolbar_search"
         android:icon="@drawable/ic_search_white_24dp"
         android:title="@string/toolbar_search"
-        app:showAsAction="ifRoom" />
+        android:showAsAction="ifRoom" />
 </menu>
