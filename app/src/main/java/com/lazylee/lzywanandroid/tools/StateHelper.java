@@ -20,7 +20,7 @@ public class StateHelper {
      *
      * @return 是否连接网络
      */
-    public static boolean isNetworkAvaiable() {
+    public static boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager = (ConnectivityManager) App.getInstance()
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();

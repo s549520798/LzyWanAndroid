@@ -37,7 +37,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.lazylee.lzywanandroid.tools.StateHelper.isNetworkAvaiable;
+import static com.lazylee.lzywanandroid.tools.StateHelper.isNetworkAvailable;
 
 public class SearchPresenter implements SearchContract.Presenter {
 
@@ -132,7 +132,7 @@ public class SearchPresenter implements SearchContract.Presenter {
     @Override
     public void getHotKey() {
         HotKeyDao hotKeyDao = App.getInstance().getDaoSession().getHotKeyDao();
-        if (isNetworkAvaiable()) {
+        if (isNetworkAvailable()) {
             wanAndroidService.getHotKeys()
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
