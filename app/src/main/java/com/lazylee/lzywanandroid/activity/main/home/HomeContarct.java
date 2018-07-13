@@ -28,6 +28,9 @@ public interface HomeContarct {
     }
 
     interface Presenter extends BasePresenter {
+
+        void initArticles(ArticleAdapter adapter);
+
         void updateArticles(ArticleAdapter adapter, int page);
 
         void loadMoreArticles(ArticleAdapter adapter, int page);

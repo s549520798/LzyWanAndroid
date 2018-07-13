@@ -9,7 +9,9 @@ import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 import org.greenrobot.greendao.annotation.Generated;
 
@@ -18,7 +20,7 @@ import org.greenrobot.greendao.annotation.Generated;
  * Created by lazylee on 2018/3/23.
  */
 @Entity
-public class Article {
+public class Article  {
 
     private long id;
     private String apkLink;
@@ -254,6 +256,14 @@ public class Article {
         this.tags = tags;
     }
 
+    public boolean getCollect() {
+        return this.collect;
+    }
+
+    public boolean getFresh() {
+        return this.fresh;
+    }
+
     @Override
     public String toString() {
         return "Article{" +
@@ -282,11 +292,17 @@ public class Article {
                 '}';
     }
 
-    public boolean getCollect() {
-        return this.collect;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Article article = (Article) o;
+        return id == article.id;
     }
 
-    public boolean getFresh() {
-        return this.fresh;
+    @Override
+    public int hashCode() {
+
+        return(int)(id ^ (id >>> 32));
     }
 }

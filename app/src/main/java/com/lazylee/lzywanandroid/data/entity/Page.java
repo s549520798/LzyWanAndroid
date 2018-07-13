@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class Page {
 
-    private int curPage;
+    private int curPage;     //curPage 从1开始。但是 http 请求时是从0开始。 请求的是0 但返回的页数是1
     private int offset;
     private int size;
     private int pageCount;

@@ -4,12 +4,14 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +35,7 @@ import java.util.List;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment implements HomeContarct.View, SwipeRefreshLayout.OnRefreshListener {
+public class HomeFragment extends Fragment implements HomeContarct.View, SwipeRefreshLayout.OnRefreshListener, View.OnClickListener {
 
     public static final String TAG = "HomeFragment";
 
@@ -41,7 +43,6 @@ public class HomeFragment extends Fragment implements HomeContarct.View, SwipeRe
     private ArticleAdapter mAdapter;
     private ArrayList<Article> articles = new ArrayList<>();
     private int mPage = 0;
-    private boolean mIsStateViewShow;
 
     private RecyclerView mRecyclerView;
     private ConstraintLayout mStateView;
@@ -85,6 +86,8 @@ public class HomeFragment extends Fragment implements HomeContarct.View, SwipeRe
         mTvLoadAgain = mRootView.findViewById(R.id.state_load_again);
         mStateProgressBar = mRootView.findViewById(R.id.state_progress_bar);
         mRefreshLayout = mRootView.findViewById(R.id.refresh_home_frag);
+
+        mTvLoadAgain.setOnClickListener(this);
         return mRootView;
     }
 
@@ -101,7 +104,7 @@ public class HomeFragment extends Fragment implements HomeContarct.View, SwipeRe
         showStateView(true);
         showStateEmptyView(false);
         showProgressIndicator(true);
-        mPresenter.updateArticles(mAdapter, mPage);
+        mPresenter.initArticles(mAdapter);
     }
 
     @Override
@@ -133,7 +136,6 @@ public class HomeFragment extends Fragment implements HomeContarct.View, SwipeRe
 
     @Override
     public void showStateView(boolean show) {
-        mIsStateViewShow = show;
         mStateView.setVisibility(show ? View.VISIBLE : View.GONE);
     }
 
@@ -171,8 +173,20 @@ public class HomeFragment extends Fragment implements HomeContarct.View, SwipeRe
 
     @Override
     public boolean isStateViewShow() {
-        return mIsStateViewShow;
+        return mStateView.getVisibility() == View.VISIBLE;
     }
 
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.state_load_again:
+                if (isStateViewShow()){
+                    mPresenter.initArticles(mAdapter);
+                }
+                break;
+            default:
+                break;
+        }
+    }
 }
