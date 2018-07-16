@@ -100,6 +100,11 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     @Override
+    public void showMessage(String msg, int type) {
+        LzyToast.showToast(msg, type);
+    }
+
+    @Override
     public void showMessage(String msg) {
         LzyToast.showMessage(msg, 1500);
     }

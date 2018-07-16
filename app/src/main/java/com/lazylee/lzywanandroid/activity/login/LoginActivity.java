@@ -64,6 +64,16 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     }
 
     @Override
+    public void showMessage(String msg, int type) {
+        LzyToast.showToast(msg, type);
+    }
+
+    @Override
+    public void showMessage(String msg) {
+        LzyToast.showMessage(msg);
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.textView:
@@ -77,11 +87,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
             default:
                 break;
         }
-    }
-
-    @Override
-    public void showMessage(String msg) {
-        LzyToast.showMessage(msg, 1500);
     }
 
     @Override
@@ -131,4 +136,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         mTvRegister = findViewById(R.id.textView);
         mProgressBar = findViewById(R.id.progressBar);
     }
+
+
 }

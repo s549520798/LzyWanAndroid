@@ -2,7 +2,9 @@ package com.lazylee.lzywanandroid.view;
 
 
 import android.content.Context;
+
 import androidx.annotation.LayoutRes;
+
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +27,8 @@ public class LzyToast {
     private static final int TYPE_NORMAL = 0;
     private static final int TYPE_ERROR = 1;
     private static final int TYPE_ALERT = 2;
+
+    private static final int DEFAULT_TOAST_DURATION = 1500;
 
     /**
      * initialize toast
@@ -79,11 +83,41 @@ public class LzyToast {
         mToast.show();
     }
 
+    public static void showMessage(String msg) {
+        showMessage(msg, DEFAULT_TOAST_DURATION);
+    }
+
+    public static void showToast(String msg, int type) {
+        switch (type) {
+            case TYPE_NORMAL:
+                showMessage(msg);
+                break;
+            case TYPE_ERROR:
+                showError(msg);
+                break;
+            case TYPE_ALERT:
+                showAlert(msg);
+                break;
+            default:
+                showMessage(msg);
+                break;
+        }
+
+    }
+
+    public static void showError(String msg) {
+        showError(msg, DEFAULT_TOAST_DURATION);
+    }
+
     public static void showError(String msg, int duration) {
         setGravity(Gravity.CENTER, 0, 300);
         setCustomsView(msg, TYPE_ERROR);
         mToast.setDuration(duration);
         mToast.show();
+    }
+
+    public static void showAlert(String msg) {
+        showAlert(msg, DEFAULT_TOAST_DURATION);
     }
 
     public static void showAlert(String msg, int duration) {

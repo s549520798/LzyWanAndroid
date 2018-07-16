@@ -174,6 +174,11 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
     }
 
     @Override
+    public void showMessage(String msg, int type) {
+        LzyToast.showToast(msg, type);
+    }
+
+    @Override
     public void showMessage(String msg) {
         LzyToast.showMessage(msg, 1500);
     }

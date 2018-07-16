@@ -130,6 +130,11 @@ public class HomeFragment extends Fragment implements HomeContarct.View, SwipeRe
     }
 
     @Override
+    public void showMessage(String msg, int type) {
+        LzyToast.showToast(msg, type);
+    }
+
+    @Override
     public void showMessage(String msg) {
         LzyToast.showMessage(msg, 1500);
     }

@@ -6,9 +6,9 @@ import android.graphics.Color;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.NestedScrollView;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
@@ -64,6 +64,11 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
     @Override
     public void setPresenter(RegisterContract.Presenter presenter) {
         this.mRegisterPresenter = presenter;
+    }
+
+    @Override
+    public void showMessage(String msg, int type) {
+        LzyToast.showToast(msg, type);
     }
 
     @Override
