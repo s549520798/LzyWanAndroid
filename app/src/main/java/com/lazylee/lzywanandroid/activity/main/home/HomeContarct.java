@@ -31,9 +31,9 @@ public interface HomeContarct {
 
         void initArticles(ArticleAdapter adapter);
 
-        void updateArticles(ArticleAdapter adapter, int page);
+        void updateArticles(ArticleAdapter adapter);
 
-        void loadMoreArticles(ArticleAdapter adapter, int page);
+        void loadMoreArticles(ArticleAdapter adapter);
 
     }
 }

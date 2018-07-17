@@ -14,9 +14,11 @@ import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryViewHolder> {
+public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryViewHolder> implements BaseAdapterListener{
 
     private List<SearchHistory> historyList = new ArrayList<>();
+    private OnItemClickListener mItemClickListener;
+    private OnItemLongClickListener mItemLongClickListener;
 
     public SearchHistoryAdapter() {
 
@@ -31,6 +33,10 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryView
 
     @Override
     public void onBindViewHolder(SearchHistoryViewHolder holder, int position) {
+        holder.itemView.setOnClickListener(view -> {
+            mItemClickListener.onClick(view,position);
+        });
+        holder.itemView.setOnLongClickListener(view -> mItemLongClickListener.onLongClick(view,position));
         holder.bindView(historyList.get(position));
     }
 
@@ -67,5 +73,15 @@ public class SearchHistoryAdapter extends RecyclerView.Adapter<SearchHistoryView
         //historyList.indexOf(history);
         historyList.remove(history);
         notifyDataSetChanged();
+    }
+
+    @Override
+    public void setItemClickListener(OnItemClickListener itemClickListener) {
+        this.mItemClickListener =itemClickListener;
+    }
+
+    @Override
+    public void setItemLongClickListener(OnItemLongClickListener itemLongClickListener) {
+        this.mItemLongClickListener = itemLongClickListener;
     }
 }

@@ -8,10 +8,13 @@
 
     <ImageView
         android:id="@+id/toast_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/toast_margin_left"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_gravity="center_vertical"
-        android:scaleType="fitCenter" />
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/toast_error"
+        android:layout_marginStart="@dimen/toast_margin_left" />
     <TextView
         android:id="@+id/toast_text"
         android:layout_width="wrap_content"
@@ -19,8 +22,8 @@
         android:textSize="18sp"
         android:layout_gravity="center_horizontal"
         android:gravity="center"
-        android:paddingLeft="@dimen/chip_horizontal_padding"
-        android:paddingRight="@dimen/chip_horizontal_padding"
+        android:paddingLeft="@dimen/toast_text_padding_left"
+        android:paddingRight="@dimen/toast_text_padding_right"
         android:paddingTop="4dp"
         android:paddingBottom="4dp"
         app:fontFamily="sans-serif-condensed"

@@ -1,6 +1,7 @@
 package com.lazylee.lzywanandroid.activity.main.home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.lazylee.lzywanandroid.R;
+import com.lazylee.lzywanandroid.activity.web.WebActivity;
 import com.lazylee.lzywanandroid.adapter.ArticleAdapter;
 import com.lazylee.lzywanandroid.data.entity.Article;
 import com.lazylee.lzywanandroid.view.AppbarRefreshLayout;
@@ -42,7 +44,6 @@ public class HomeFragment extends Fragment implements HomeContarct.View, SwipeRe
     private HomeContarct.Presenter mPresenter;
     private ArticleAdapter mAdapter;
     private ArrayList<Article> articles = new ArrayList<>();
-    private int mPage = 0;
 
     private RecyclerView mRecyclerView;
     private ConstraintLayout mStateView;
@@ -96,10 +97,28 @@ public class HomeFragment extends Fragment implements HomeContarct.View, SwipeRe
         super.onViewCreated(view, savedInstanceState);
         mPresenter = new HomePresenter(this);
         mAdapter = new ArticleAdapter(articles);
+        mAdapter.setItemClickListener((view1, position) -> {
+                Intent intent = new Intent(view.getContext(), WebActivity.class);
+                intent.putExtra("link", articles.get(position).getLink());
+                startActivity(intent);
+        });
+        //mAdapter.setItemLongClickListener((view12, position) -> false);
+
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.addItemDecoration(new ArticleRecycleDivider(getResources()
                 .getColor(R.color.colorRecycleDivider)));
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (newState == RecyclerView.SCROLL_STATE_DRAGGING &&
+                        !recyclerView.canScrollVertically(1)){
+                   //TODO 加载更过操作
+                    mPresenter.loadMoreArticles(mAdapter);
+                }
+            }
+        });
         mRefreshLayout.setOnRefreshListener(this);
         showStateView(true);
         showStateEmptyView(false);
@@ -110,7 +129,7 @@ public class HomeFragment extends Fragment implements HomeContarct.View, SwipeRe
     @Override
     public void onRefresh() {
         //TODO refresh the recyclerView here
-        mPresenter.updateArticles(mAdapter, 0);
+        mPresenter.updateArticles(mAdapter);
     }
 
     @Override
@@ -136,8 +155,9 @@ public class HomeFragment extends Fragment implements HomeContarct.View, SwipeRe
 
     @Override
     public void showMessage(String msg) {
-        LzyToast.showMessage(msg, 1500);
+        LzyToast.showMessage(msg);
     }
+
 
     @Override
     public void showStateView(boolean show) {

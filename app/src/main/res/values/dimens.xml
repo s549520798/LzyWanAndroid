@@ -17,4 +17,9 @@
     <dimen name="chip_radius">16dp</dimen>
     <dimen name="chip_horizontal_padding">12dp</dimen>
     <dimen name="chip_icon_horizontal_margin">8dp</dimen>
+
+    <!--Dimen related to toast  -->
+    <dimen name="toast_margin_left">16dp</dimen>
+    <dimen name="toast_text_padding_left">8dp</dimen>
+    <dimen name="toast_text_padding_right">20dp</dimen>
 </resources>

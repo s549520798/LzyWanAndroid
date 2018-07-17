@@ -3,15 +3,12 @@ package com.lazylee.lzywanandroid.adapter;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.lazylee.lzywanandroid.R;
-import com.lazylee.lzywanandroid.activity.web.WebActivity;
 import com.lazylee.lzywanandroid.adapter.viewholder.ArticleViewHolder;
 import com.lazylee.lzywanandroid.data.entity.Article;
 
@@ -24,10 +21,13 @@ import java.util.List;
  * Created by lazylee on 2018/4/11.
  */
 
-public class ArticleAdapter extends RecyclerView.Adapter<ArticleViewHolder> {
+public class ArticleAdapter extends RecyclerView.Adapter<ArticleViewHolder> implements BaseAdapterListener {
 
 
     private ArrayList<Article> mList;
+
+    private OnItemClickListener mItemClickListener;
+    private OnItemLongClickListener mItemLongClickListener;
 
     public ArticleAdapter(ArrayList<Article> list) {
         this.mList = list;
@@ -43,14 +43,11 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleViewHolder> {
 
     @Override
     public void onBindViewHolder(ArticleViewHolder holder, int position) {
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), WebActivity.class);
-                intent.putExtra("link", mList.get(position).getLink());
-                view.getContext().startActivity(intent);
-            }
+        holder.itemView.setOnClickListener(view -> {
+            mItemClickListener.onClick(view,position);
         });
+        holder.itemView.setOnLongClickListener(view -> mItemLongClickListener.onLongClick(view,position));
+
         holder.bindView(mList.get(position));
     }
 
@@ -116,4 +113,20 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleViewHolder> {
             if (mList.addAll(articles)) notifyDataSetChanged();
         }
     }
+    public void addFooterView(){
+
+    }
+
+
+    @Override
+    public void setItemClickListener(OnItemClickListener itemClickListener) {
+        this.mItemClickListener = itemClickListener;
+    }
+
+    @Override
+    public void setItemLongClickListener(OnItemLongClickListener itemLongClickListener) {
+        this.mItemLongClickListener = itemLongClickListener;
+    }
+
+
 }

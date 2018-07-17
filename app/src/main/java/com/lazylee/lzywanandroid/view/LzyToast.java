@@ -24,9 +24,9 @@ public class LzyToast {
 
     private Context mContext;    //usually is Application or activity;
     private static Toast mToast;
-    private static final int TYPE_NORMAL = 0;
-    private static final int TYPE_ERROR = 1;
-    private static final int TYPE_ALERT = 2;
+    public static final int TYPE_NORMAL = 0;
+    public static final int TYPE_ERROR = 1;
+    public static final int TYPE_ALERT = 2;
 
     private static final int DEFAULT_TOAST_DURATION = 1500;
 
@@ -55,7 +55,7 @@ public class LzyToast {
             case TYPE_ALERT:
                 view = inflater.inflate(R.layout.toast_layout_alert, null);
                 ImageView image = view.findViewById(R.id.toast_image);
-                image.setBackgroundResource(R.drawable.ic_warning_white_24dp);
+                image.setBackgroundResource(R.drawable.ic_alert_white_24dp);
                 break;
             default:
                 break;

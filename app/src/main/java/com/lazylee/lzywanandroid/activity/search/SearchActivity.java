@@ -1,6 +1,7 @@
 package com.lazylee.lzywanandroid.activity.search;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -24,6 +25,7 @@ import android.widget.RelativeLayout;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 import com.lazylee.lzywanandroid.R;
+import com.lazylee.lzywanandroid.activity.web.WebActivity;
 import com.lazylee.lzywanandroid.adapter.ArticleAdapter;
 import com.lazylee.lzywanandroid.adapter.HotKeyAdapter;
 import com.lazylee.lzywanandroid.adapter.SearchHistoryAdapter;
@@ -129,10 +131,16 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
         mSearchView.setOnClickListener(this);
         mHotKeyView.setSingleSelection(true);
         mResultAdapter = new ArticleAdapter(articles);
+        mResultAdapter.setItemClickListener((view, position) -> {
+            Intent intent = new Intent(view.getContext(), WebActivity.class);
+            intent.putExtra("link", articles.get(position).getLink());
+            startActivity(intent);
+        });
         mResultView.setLayoutManager(new LinearLayoutManager(this));
         mResultView.setAdapter(mResultAdapter);
         mResultView.addItemDecoration(new ArticleRecycleDivider(getResources()
                 .getColor(R.color.colorRecycleDivider)));
+
 
         mHistoryAdapter = new SearchHistoryAdapter();
         mHistoryView.setLayoutManager(new LinearLayoutManager(this));

@@ -29,6 +29,7 @@
 
     <!-- String  related to home fragment-->
     <string name="state_load_again">重新加载</string>
+    <string name="state_load_more">正在加载更多</string>
 
     <!-- Strings related to article item-->
     <string name="article_item_text_author">作者:</string>
@@ -42,4 +43,7 @@
     <string name="search_close_btn">清空输入</string>
     <string name="search_btn">搜索按钮</string>
 
+    <!-- Strings related to LzyToast-->
+    <string name="toast_error">错误提示</string>
+    <string name="toast_alert">风险提示</string>
 </resources>

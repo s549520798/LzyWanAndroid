@@ -13,9 +13,14 @@ import com.lazylee.lzywanandroid.data.entity.HotKey;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HotKeyAdapter extends androidx.recyclerview.widget.RecyclerView.Adapter<HotKeyViewHolder> {
+
+
+public class HotKeyAdapter extends RecyclerView.Adapter<HotKeyViewHolder> implements BaseAdapterListener{
 
     private ArrayList<HotKey> hotKeys = new ArrayList<>();
+    private OnItemClickListener itemClickListener;
+
+    private OnItemLongClickListener itemLongClickListener;
 
     public HotKeyAdapter() {
     }
@@ -30,6 +35,10 @@ public class HotKeyAdapter extends androidx.recyclerview.widget.RecyclerView.Ada
 
     @Override
     public void onBindViewHolder(@NonNull HotKeyViewHolder holder, int position) {
+        holder.itemView.setOnClickListener(view -> {
+            itemClickListener.onClick(view,position);
+        });
+        holder.itemView.setOnLongClickListener(view -> itemLongClickListener.onLongClick(view,position));
         holder.bindView(hotKeys.get(position));
     }
 
@@ -58,5 +67,15 @@ public class HotKeyAdapter extends androidx.recyclerview.widget.RecyclerView.Ada
             hotKeys.addAll(list);
         }
         notifyDataSetChanged();
+    }
+
+    @Override
+    public void setItemClickListener(OnItemClickListener itemClickListener) {
+        this.itemClickListener = itemClickListener;
+    }
+
+    @Override
+    public void setItemLongClickListener(OnItemLongClickListener itemLongClickListener) {
+        this.itemLongClickListener = itemLongClickListener;
     }
 }
