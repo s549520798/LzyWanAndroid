@@ -2,22 +2,26 @@ package com.lazylee.lzywanandroid.activity.main.project.fragment;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
 import androidx.fragment.app.Fragment;
 
 import com.lazylee.lzywanandroid.R;
+import com.lazylee.lzywanandroid.data.entity.ProjectCategory;
 
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProjectVPFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ProjectVPFragment extends Fragment {
 
+    private static final String TAG = "ProjectVPFragment";
+
+    private static final String CATEGORY = "category";
+    private ProjectCategory mCategory;
+
+    private TextView mTextView;
 
 
     public ProjectVPFragment() {
@@ -31,8 +35,11 @@ public class ProjectVPFragment extends Fragment {
      * @return A new instance of fragment ProjectVPFragment.
      */
 
-    public static ProjectVPFragment newInstance() {
+    public static ProjectVPFragment newInstance(ProjectCategory category) {
         ProjectVPFragment fragment = new ProjectVPFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(CATEGORY,category);
+        fragment.setArguments(bundle);
         return fragment;
     }
 
@@ -40,7 +47,8 @@ public class ProjectVPFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-
+            Bundle bundle = getArguments();
+            mCategory = bundle.getParcelable(CATEGORY);
         }
     }
 
@@ -48,7 +56,17 @@ public class ProjectVPFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.project_viewpager_fragment, container, false);
+        View rootView = inflater.inflate(R.layout.project_viewpager_fragment,container,false);
+        mTextView = rootView.findViewById(R.id.textView);
+        return rootView;
     }
 
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        if (mCategory != null){
+            //Log.d(TAG, "onViewCreated: category" + mCategory.toString());
+            mTextView.setText(mCategory.getName());
+        }
+    }
 }

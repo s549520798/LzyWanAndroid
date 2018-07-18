@@ -95,7 +95,7 @@ public class HomeFragment extends Fragment implements HomeContract.View, SwipeRe
         mPresenter = new HomePresenter(this);
         mAdapter = new ArticleAdapter(articles);
         mAdapter.setItemClickListener((view1, position) -> {
-                Intent intent = new Intent(view.getContext(), WebActivity.class);
+                Intent intent = new Intent(view1.getContext(), WebActivity.class);
                 intent.putExtra("link", articles.get(position).getLink());
                 startActivity(intent);
         });
@@ -125,7 +125,7 @@ public class HomeFragment extends Fragment implements HomeContract.View, SwipeRe
 
     @Override
     public void onRefresh() {
-        //TODO refresh the recyclerView here
+
         mPresenter.updateArticles(mAdapter);
     }
 

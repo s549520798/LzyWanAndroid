@@ -33,7 +33,7 @@ public class ProjectFragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return categories == null ? 0 : categories.size();
+        return fragments == null ? 0 : categories.size();
     }
 
     @Nullable

@@ -45,8 +45,8 @@ public interface WanAndroidService {
     Observable<ServiceResult<Page>> search(@Path("page") int page, @Query("k") String k);
 
     @GET("/project/tree/json")
-    Observable<ServiceResult<List<ProjectCategory>>> getProjectCategorys();
+    Observable<ServiceResult<List<ProjectCategory>>> getProjectCategories();
 
-    @GET("/project/list/{page}/json?cid={cid}")
-    Observable<ServiceResult<Page>> getProjects(@Path("page") int page, @Path("cid") int cid);
+    @GET("/project/list/{page}/json")
+    Observable<ServiceResult<Page>> getProjects(@Path("page") int page, @Query("cid") int cid);
 }
