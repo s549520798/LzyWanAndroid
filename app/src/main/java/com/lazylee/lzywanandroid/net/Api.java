@@ -27,5 +27,13 @@ public class Api {
      * method post; param: k 关键词，
      */
     public static final String API_SEARCH = "http://www.wanandroid.com/article/query/0/json";
+    /**
+     * method get; 获取project 分类
+     */
+    public static final String API_PROJECT_CATEGORY = API_BASE_URL + "/project/tree/json";
+    /**
+     * method get; 拼接cid (project category 的id)
+     */
+    public static final String API_PROJECTS = API_BASE_URL + "/project/list/1/json?cid=294";
 }
 

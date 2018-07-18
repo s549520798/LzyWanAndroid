@@ -4,6 +4,7 @@ import com.lazylee.lzywanandroid.data.entity.Banner;
 import com.lazylee.lzywanandroid.data.entity.CommonWebsite;
 import com.lazylee.lzywanandroid.data.entity.HotKey;
 import com.lazylee.lzywanandroid.data.entity.Page;
+import com.lazylee.lzywanandroid.data.entity.ProjectCategory;
 import com.lazylee.lzywanandroid.data.entity.User;
 
 import java.util.List;
@@ -42,4 +43,10 @@ public interface WanAndroidService {
 
     @POST("/article/query/{page}/json")
     Observable<ServiceResult<Page>> search(@Path("page") int page, @Query("k") String k);
+
+    @GET("/project/tree/json")
+    Observable<ServiceResult<List<ProjectCategory>>> getProjectCategorys();
+
+    @GET("/project/list/{page}/json?cid={cid}")
+    Observable<ServiceResult<Page>> getProjects(@Path("page") int page, @Path("cid") int cid);
 }

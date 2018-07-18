@@ -9,7 +9,7 @@ import com.lazylee.lzywanandroid.mvp.BaseView;
  * Created by lazylee on 2018/4/10.
  */
 
-public interface HomeContarct {
+public interface HomeContract {
 
     interface View extends BaseView<Presenter> {
 

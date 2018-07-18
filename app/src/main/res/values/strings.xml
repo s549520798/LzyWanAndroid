@@ -46,4 +46,7 @@
     <!-- Strings related to LzyToast-->
     <string name="toast_error">错误提示</string>
     <string name="toast_alert">风险提示</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

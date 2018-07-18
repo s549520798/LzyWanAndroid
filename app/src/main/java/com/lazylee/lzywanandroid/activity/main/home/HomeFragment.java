@@ -2,8 +2,6 @@ package com.lazylee.lzywanandroid.activity.main.home;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -29,7 +27,6 @@ import com.lazylee.lzywanandroid.view.LzyToast;
 import com.lazylee.lzywanandroid.view.divider.ArticleRecycleDivider;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -37,11 +34,11 @@ import java.util.List;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment implements HomeContarct.View, SwipeRefreshLayout.OnRefreshListener, View.OnClickListener {
+public class HomeFragment extends Fragment implements HomeContract.View, SwipeRefreshLayout.OnRefreshListener, View.OnClickListener {
 
     public static final String TAG = "HomeFragment";
 
-    private HomeContarct.Presenter mPresenter;
+    private HomeContract.Presenter mPresenter;
     private ArticleAdapter mAdapter;
     private ArrayList<Article> articles = new ArrayList<>();
 
@@ -144,7 +141,7 @@ public class HomeFragment extends Fragment implements HomeContarct.View, SwipeRe
     }
 
     @Override
-    public void setPresenter(HomeContarct.Presenter presenter) {
+    public void setPresenter(HomeContract.Presenter presenter) {
         this.mPresenter = presenter;
     }
 

@@ -2,14 +2,12 @@ package com.lazylee.lzywanandroid.activity.main.home;
 
 import com.lazylee.lzywanandroid.adapter.ArticleAdapter;
 import com.lazylee.lzywanandroid.data.entity.Page;
-import com.lazylee.lzywanandroid.data.greendao.DaoMaster;
 import com.lazylee.lzywanandroid.net.Api;
 import com.lazylee.lzywanandroid.net.ServiceResult;
 import com.lazylee.lzywanandroid.net.WanAndroidService;
 import com.lazylee.lzywanandroid.view.LzyToast;
 
 import io.reactivex.Observer;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
@@ -22,16 +20,16 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by lazylee on 2018/4/10.
  */
 
-public class HomePresenter implements HomeContarct.Presenter {
+public class HomePresenter implements HomeContract.Presenter {
 
-    private HomeContarct.View mView;
+    private HomeContract.View mView;
 
     private WanAndroidService wanAndroidService;
 
     private boolean isOver;  //判断是否没有更多的请求页数
     private static int requestPage = 0;  //下一次请求的页数。
 
-    HomePresenter(HomeContarct.View view) {
+    HomePresenter(HomeContract.View view) {
         this.mView = view;
         mView.setPresenter(this);
         initWanAndroidService();
