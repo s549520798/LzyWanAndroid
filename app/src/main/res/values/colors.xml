@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <color name="colorTransparent">#00000000</color>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#212121</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#30E57E</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorWhiteB">#F5F5F5</color>
     <color name="colorNewPrimary">@color/material_light_blue_500</color>
@@ -14,6 +14,8 @@
     <color name="colorRecycleDivider">@color/material_grey_200</color>
 
     <color name="colorRipple">#D8D9DA</color>
+
+
 
     <!-- Colors related to LzyChip -->
     <color name="colorChipBackground">#e0e0e0</color>
