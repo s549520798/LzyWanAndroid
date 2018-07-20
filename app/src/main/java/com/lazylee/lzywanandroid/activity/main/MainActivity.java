@@ -8,12 +8,14 @@ import androidx.annotation.NonNull;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -29,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     private static final String TAG = "MainActivity";
     private MainContract.Presenter mPresenter;
-
+    private CoordinatorLayout mCoordinatorLayout;
     private BottomNavigationView mBottomNav;
     private Toolbar mToolBar;
     private DrawerLayout mDrawerLayout;
@@ -146,9 +148,13 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
             };
 
     private void initViews() {
+        mCoordinatorLayout = findViewById(R.id.main_cl);
         mBottomNav = findViewById(R.id.main_bottom_nav);
         mToolBar = findViewById(R.id.toolbar);
         mDrawerLayout = findViewById(R.id.main_drawer);
         mLeftNav = findViewById(R.id.main_left_nav);
+
+        Log.d(TAG, "initViews: bottom nav dependency view :"
+                + mCoordinatorLayout.getDependencies(mBottomNav).size());
     }
 }
