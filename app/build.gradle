@@ -5,13 +5,12 @@ android {
     compileSdkVersion 'android-P'
     defaultConfig {
         applicationId "com.lazylee.lzywanandroid"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
-
 
     }
     buildTypes {
@@ -51,6 +50,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'org.greenrobot:greendao:3.2.2'
+    implementation 'com.airbnb.android:lottie:2.5.5'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha1'
