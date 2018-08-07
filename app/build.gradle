@@ -5,7 +5,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.lazylee.lzywanandroid"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -38,6 +38,7 @@ greendao {
 }
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':lottie')
     implementation "androidx.appcompat:appcompat:${androidxVersion}"
     implementation "androidx.vectordrawable:vectordrawable:${androidxVersion}"
     implementation "androidx.legacy:legacy-support-v4:${androidxVersion}"
