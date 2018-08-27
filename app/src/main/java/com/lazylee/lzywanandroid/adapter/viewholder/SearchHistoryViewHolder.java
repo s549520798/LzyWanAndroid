@@ -1,12 +1,13 @@
 package com.lazylee.lzywanandroid.adapter.viewholder;
 
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import com.lazylee.lzywanandroid.R;
 import com.lazylee.lzywanandroid.data.entity.SearchHistory;
 
-import androidx.recyclerview.widget.RecyclerView;
+
 
 public class SearchHistoryViewHolder extends RecyclerView.ViewHolder {
 

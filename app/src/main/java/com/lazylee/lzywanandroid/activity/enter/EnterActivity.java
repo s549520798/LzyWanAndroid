@@ -1,11 +1,11 @@
 package com.lazylee.lzywanandroid.activity.enter;
 
 import android.content.Intent;
-import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.lazylee.lzywanandroid.R;
-import com.lazylee.lzywanandroid.activity.login.LoginActivity;
 import com.lazylee.lzywanandroid.activity.main.MainActivity;
 
 public class EnterActivity extends AppCompatActivity {

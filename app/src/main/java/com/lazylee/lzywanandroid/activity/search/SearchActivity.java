@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+import android.support.design.chip.Chip;
+import android.support.design.chip.ChipGroup;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -22,8 +24,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 
-import com.google.android.material.chip.Chip;
-import com.google.android.material.chip.ChipGroup;
+
 import com.lazylee.lzywanandroid.R;
 import com.lazylee.lzywanandroid.activity.web.WebActivity;
 import com.lazylee.lzywanandroid.adapter.ArticleAdapter;

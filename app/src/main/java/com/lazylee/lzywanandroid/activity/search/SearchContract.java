@@ -1,8 +1,6 @@
 package com.lazylee.lzywanandroid.activity.search;
 
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.chip.Chip;
 import com.lazylee.lzywanandroid.adapter.SearchHistoryAdapter;
 import com.lazylee.lzywanandroid.data.entity.Page;
 import com.lazylee.lzywanandroid.mvp.BasePresenter;

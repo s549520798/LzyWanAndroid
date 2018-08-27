@@ -38,12 +38,10 @@ greendao {
 }
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation project(':lottie')
-    implementation "androidx.appcompat:appcompat:${androidxVersion}"
-    implementation "androidx.vectordrawable:vectordrawable:${androidxVersion}"
-    implementation "androidx.legacy:legacy-support-v4:${androidxVersion}"
-    implementation "com.google.android.material:material:${androidxVersion}"
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+    implementation "com.android.support:appcompat-v7:${supportLibraryVersion}"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation "com.android.support:support-v4:${supportLibraryVersion}"
+    implementation "com.android.support:design:${supportLibraryVersion}"
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
     implementation 'io.reactivex.rxjava2:rxjava:2.1.9'
     implementation "com.squareup.retrofit2:retrofit:${retrofitVersion}"
@@ -52,7 +50,8 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'org.greenrobot:greendao:3.2.2'
+    implementation "com.airbnb.android:lottie:${lottieVersion}"
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0-alpha1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha1'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }

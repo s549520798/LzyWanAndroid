@@ -1,7 +1,8 @@
 package com.lazylee.lzywanandroid.view;
 
 import android.content.Context;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.AttributeSet;
 
 import com.lazylee.lzywanandroid.R;
@@ -11,7 +12,7 @@ import com.lazylee.lzywanandroid.R;
  * Created by lazylee on 2018/4/18.
  */
 
-public class AppbarRefreshLayout extends androidx.swiperefreshlayout.widget.SwipeRefreshLayout {
+public class AppbarRefreshLayout extends SwipeRefreshLayout {
     public AppbarRefreshLayout(Context context) {
         super(context);
     }

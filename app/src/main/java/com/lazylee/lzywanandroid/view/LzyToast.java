@@ -3,7 +3,7 @@ package com.lazylee.lzywanandroid.view;
 
 import android.content.Context;
 
-import androidx.annotation.LayoutRes;
+
 
 import android.view.Gravity;
 import android.view.LayoutInflater;

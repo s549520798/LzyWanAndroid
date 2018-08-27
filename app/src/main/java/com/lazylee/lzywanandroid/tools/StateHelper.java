@@ -3,13 +3,12 @@ package com.lazylee.lzywanandroid.tools;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import com.lazylee.lzywanandroid.App;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 /**
  * 获取设备状态，如连接网路等
