@@ -3,11 +3,14 @@ package com.lazylee.lzywanandroid.tools;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import com.lazylee.lzywanandroid.App;
+
+import java.io.File;
 
 
 /**
@@ -54,6 +57,7 @@ public class StateHelper {
 
     /**
      * 根据view来显示软件盘
+     *
      * @param view view
      */
     public static void showSoftKeyboard(View view) {
@@ -68,15 +72,33 @@ public class StateHelper {
 
     /**
      * hide softboard
+     *
      * @param view view
      */
-    public static void hideSoftKeyboard(@NonNull View view){
-        if (view.isFocused()){
+    public static void hideSoftKeyboard(@NonNull View view) {
+        if (view.isFocused()) {
             InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(
                     Context.INPUT_METHOD_SERVICE);
             if (imm != null) imm.hideSoftInputFromWindow(view.getWindowToken(),
                     InputMethodManager.HIDE_NOT_ALWAYS);
         }
+    }
+
+    /**
+     *  获取应用本地缓存文件夹
+     * @param context  上下文
+     * @param uniqueName 缓存文件夹类型名
+     * @return 缓存问价目录
+     */
+    public static File getDiskCacheDir(Context context, String uniqueName) {
+        String cachePath;
+        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
+                || !Environment.isExternalStorageRemovable()) {
+            cachePath = context.getExternalCacheDir().getPath();
+        } else {
+            cachePath = context.getCacheDir().getPath();
+        }
+        return new File(cachePath + File.separator + uniqueName);
     }
 
 }
