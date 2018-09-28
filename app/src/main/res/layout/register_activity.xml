@@ -50,6 +50,7 @@
             android:orientation="vertical">
 
             <android.support.design.widget.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
                 android:id="@+id/register_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -67,6 +68,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
                 android:id="@+id/register_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -85,6 +87,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
                 android:id="@+id/register_repassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

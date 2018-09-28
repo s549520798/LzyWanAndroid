@@ -19,6 +19,7 @@ import android.view.MenuItem;
 
 
 import com.lazylee.lzywanandroid.R;
+import com.lazylee.lzywanandroid.activity.login.LoginActivity;
 import com.lazylee.lzywanandroid.activity.main.home.HomeFragment;
 import com.lazylee.lzywanandroid.activity.search.SearchActivity;
 import com.lazylee.lzywanandroid.view.LzyToast;
@@ -39,19 +40,31 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_activity);
-        initViews();
-        mPresenter = new MainPresenter(this);
-        setSupportActionBar(mToolBar);
-        mBottomNav.setOnNavigationItemSelectedListener(this);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, mDrawerLayout, mToolBar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        if (savedInstanceState == null) {
+            setContentView(R.layout.main_activity);
+            if (!isLogin()) {
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            }
+            initViews();
+            mPresenter = new MainPresenter(this);
+            setSupportActionBar(mToolBar);
+            mBottomNav.setOnNavigationItemSelectedListener(this);
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                    this, mDrawerLayout, mToolBar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
 
-        mToolBar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
-        mDrawerLayout.addDrawerListener(toggle);
-        mLeftNav.setNavigationItemSelectedListener(itemSelectedListener);
-        toggle.syncState();
-        setEnterFragment();
+            mToolBar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
+            mDrawerLayout.addDrawerListener(toggle);
+            mLeftNav.setNavigationItemSelectedListener(itemSelectedListener);
+            toggle.syncState();
+            setEnterFragment();
+        }
+
+    }
+
+
+    private boolean isLogin() {
+        //TODO 从数据库中判断是否用户已经登陆，这里模拟没有登陆的状态
+        return false;
     }
 
     private void setEnterFragment() {
