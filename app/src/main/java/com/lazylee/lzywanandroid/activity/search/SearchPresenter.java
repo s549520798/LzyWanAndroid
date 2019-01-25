@@ -1,7 +1,6 @@
 package com.lazylee.lzywanandroid.activity.search;
 
-import android.os.Message;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.util.Log;
 
 
@@ -9,31 +8,23 @@ import android.util.Log;
 
 import com.lazylee.lzywanandroid.App;
 import com.lazylee.lzywanandroid.adapter.SearchHistoryAdapter;
+import com.lazylee.lzywanandroid.data.AppDatabase;
+import com.lazylee.lzywanandroid.data.dao.HotKeyDao;
+import com.lazylee.lzywanandroid.data.dao.SearchHistoryDao;
 import com.lazylee.lzywanandroid.data.entity.HotKey;
 import com.lazylee.lzywanandroid.data.entity.Page;
 import com.lazylee.lzywanandroid.data.entity.SearchHistory;
-import com.lazylee.lzywanandroid.data.greendao.DaoSession;
-import com.lazylee.lzywanandroid.data.greendao.HotKeyDao;
-import com.lazylee.lzywanandroid.data.greendao.SearchHistoryDao;
 import com.lazylee.lzywanandroid.net.Api;
 import com.lazylee.lzywanandroid.net.ServiceResult;
 import com.lazylee.lzywanandroid.net.WanAndroidService;
 
-import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
 import io.reactivex.Observer;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
-import okhttp3.FormBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
-import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -63,8 +54,8 @@ public class SearchPresenter implements SearchContract.Presenter {
         mView.showOptionsView(false);
         mView.showResultView(false);
         mView.showEmptyResultView(false);
-        SearchHistoryDao historyDao = App.getInstance().getDaoSession().getSearchHistoryDao();
-        historyDao.insertOrReplace(new SearchHistory(s,new Date().getTime()));
+        SearchHistoryDao historyDao = AppDatabase.getInstance(App.getInstance().getContext()).searchHistoryDao();
+        historyDao.insertSearchHistory(new SearchHistory(s,new Date().getTime()));
 //测试接口返回结果
 //        mView.showMessage("search action clicked : " + s);
 //                    new Thread(new Runnable() {
@@ -132,7 +123,7 @@ public class SearchPresenter implements SearchContract.Presenter {
 
     @Override
     public void getHotKey() {
-        HotKeyDao hotKeyDao = App.getInstance().getDaoSession().getHotKeyDao();
+        HotKeyDao hotKeyDao = AppDatabase.getInstance(App.getInstance().getContext()).hotKeyDao();
         if (isNetworkAvailable()) {
             wanAndroidService.getHotKeys()
                     .subscribeOn(Schedulers.newThread())
@@ -152,7 +143,7 @@ public class SearchPresenter implements SearchContract.Presenter {
                                 for (HotKey hotkey : hotKeys
                                         ) {
                                     mView.addChip(hotkey.getName());
-                                    hotKeyDao.insertOrReplace(hotkey);
+                                    hotKeyDao.insertHotKey(hotkey);
                                 }
                             }
                         }
@@ -170,7 +161,7 @@ public class SearchPresenter implements SearchContract.Presenter {
 
         } else {
             //TODO 在数据库中查找 hot key
-            List<HotKey> list = hotKeyDao.queryBuilder().list();
+            List<HotKey> list = hotKeyDao.getAll();
             if (list != null && list.size() != 0) {
                 for (HotKey hotkey : list
                         ) {
@@ -186,8 +177,8 @@ public class SearchPresenter implements SearchContract.Presenter {
 
     @Override
     public void getSearchHistory(SearchHistoryAdapter adapter) {
-        SearchHistoryDao historyDao = App.getInstance().getDaoSession().getSearchHistoryDao();
-        List<SearchHistory> histories = historyDao.loadAll();
+        SearchHistoryDao historyDao = AppDatabase.getInstance(App.getInstance().getContext()).searchHistoryDao();
+        List<SearchHistory> histories = historyDao.getAll();
         adapter.updateHistories(histories);
     }
 }

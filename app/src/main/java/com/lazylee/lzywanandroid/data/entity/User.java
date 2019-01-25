@@ -2,15 +2,22 @@ package com.lazylee.lzywanandroid.data.entity;
 
 import java.util.List;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 /**
  * 用户entity
  * Created by lazylee on 2018/3/16.
  */
-
+@Entity
 public class User {
-
+    @PrimaryKey
     private long id;
-    private String username;
+
+    @ColumnInfo(name = "username")
+    private String userName;
+
     private String password;
     private String email;
     private String icon;
@@ -25,12 +32,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -69,7 +76,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", username='" + username + '\'' +
+                ", username='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 ", icon='" + icon + '\'' +

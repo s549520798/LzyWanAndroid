@@ -1,12 +1,15 @@
 package com.lazylee.lzywanandroid.data.entity;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 /**
  * commonly used website
  * Created by lazylee on 2018/3/23.
  */
-
+@Entity
 public class CommonWebsite {
-
+    @PrimaryKey
     private long id;
     private String icon;
     private String link;

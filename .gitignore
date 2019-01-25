@@ -64,5 +64,4 @@ freeline/
 freeline_project_description.json
 /.idea/
 /.gradle/
-/build.gradle
-!/build.gradle
+/LzyWanAndroid.zip

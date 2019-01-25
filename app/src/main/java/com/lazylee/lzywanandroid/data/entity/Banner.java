@@ -1,12 +1,14 @@
 package com.lazylee.lzywanandroid.data.entity;
 
+import androidx.room.PrimaryKey;
+
 /**
  * banner 实体类
  * Created by lazylee on 2018/3/23.
  */
 
 public class Banner {
-
+    @PrimaryKey
     private long id;
     private int order;
     private int type;

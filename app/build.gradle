@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'org.greenrobot.greendao'
 
 
 android {
@@ -10,7 +9,7 @@ android {
         targetSdkVersion rootProject.targetSdkVersion
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
 
 
@@ -28,21 +27,17 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8
     }
-    buildToolsVersion '28.0.2'
+    buildToolsVersion '28.0.3'
     productFlavors {
     }
 }
-greendao {
-    schemaVersion 1  //版本
-    daoPackage 'com.lazylee.lzywanandroid.data.greendao' // 一般为app包名+生成文件的文件夹名
-    targetGenDir 'src/main/java' //生成文件路径
-}
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
-    implementation "com.android.support.constraint:constraint-layout:$rootProject.constraintLayoutVersion"
-    implementation "com.android.support:support-v4:$rootProject.supportLibraryVersion"
-    implementation "com.android.support:design:$rootProject.supportLibraryVersion"
+    implementation 'androidx.appcompat:appcompat:1.1.0-alpha01'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0-alpha02'
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjavaVersion"
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
@@ -50,34 +45,40 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
     implementation "com.squareup.okhttp3:okhttp:$rootProject.okhttpVersion"
     implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
-    implementation "org.greenrobot:greendao:$rootProject.greendaoVersion"
     implementation "com.airbnb.android:lottie:$rootProject.lottieVersion"
+    implementation "com.android.support:multidex:$rootProject.multidexVersion"
     testImplementation "junit:junit:$rootProject.junitVersion"
-    androidTestImplementation "com.android.support.test:runner:$rootProject.runnerVersion"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 
     // ViewModel and LiveData
-    implementation "android.arch.lifecycle:extensions:$rootProject.lifecycleVersion"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0-alpha01'
 
     // alternatively - just ViewModel
-    implementation "android.arch.lifecycle:viewmodel:$rootProject.lifecycleVersion"
+    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.1.0-alpha01'
 
     // use -ktx for Kotlin
 
     // alternatively - just LiveData
-    implementation "android.arch.lifecycle:livedata:$rootProject.lifecycleVersion"
+    implementation 'androidx.lifecycle:lifecycle-livedata:2.1.0-alpha01'
 
     // alternatively - Lifecycles only (no ViewModel or LiveData).
 
     //     Support library depends on this lightweight import
-    implementation "android.arch.lifecycle:runtime:$rootProject.lifecycleVersion"
-    annotationProcessor "android.arch.lifecycle:compiler:$rootProject.lifecycleVersion"
+    implementation 'androidx.lifecycle:lifecycle-runtime:2.1.0-alpha01'
+    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.1.0-alpha01'
 
     // use kapt for Kotlin
 
     // alternately - if using Java8, use the following instead of compiler
-    implementation "android.arch.lifecycle:common-java8:$rootProject.lifecycleVersion"
+    implementation 'androidx.lifecycle:lifecycle-common-java8:2.1.0-alpha01'
 
     // optional - ReactiveStreams support for LiveData
-    implementation "android.arch.lifecycle:reactivestreams:$rootProject.lifecycleVersion"
+    implementation 'androidx.lifecycle:lifecycle-reactivestreams:2.1.0-alpha01'
+
+    def room_version = "2.1.0-alpha03"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version" // use kapt for Kotlin
+    def work_version = "1.0.0-beta02"
+    implementation "android.arch.work:work-runtime:$work_version"
 }

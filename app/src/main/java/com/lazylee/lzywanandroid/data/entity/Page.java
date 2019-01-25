@@ -1,13 +1,16 @@
 package com.lazylee.lzywanandroid.data.entity;
 
-import org.greenrobot.greendao.annotation.Entity;
+
 
 import java.util.List;
+
+import androidx.room.Entity;
 
 /**
  * page entity
  * Created by lazylee on 2018/3/23.
  */
+@Entity
 public class Page {
 
     private int curPage;     //curPage 从1开始。但是 http 请求时是从0开始。 请求的是0 但返回的页数是1

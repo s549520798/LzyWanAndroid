@@ -1,13 +1,12 @@
 package com.lazylee.lzywanandroid.adapter;
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.lazylee.lzywanandroid.R;
 import com.lazylee.lzywanandroid.adapter.viewholder.SearchHistoryViewHolder;
-import com.lazylee.lzywanandroid.data.entity.Page;
 import com.lazylee.lzywanandroid.data.entity.SearchHistory;
 
 import java.util.ArrayList;

@@ -3,7 +3,7 @@ package com.lazylee.lzywanandroid.activity.enter;
 import android.content.Intent;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.lazylee.lzywanandroid.R;
 import com.lazylee.lzywanandroid.activity.main.MainActivity;

@@ -1,19 +1,9 @@
 package com.lazylee.lzywanandroid.data.entity;
 
-import android.widget.ListView;
-
-import com.lazylee.lzywanandroid.data.converter.TagConverter;
-
-import org.greenrobot.greendao.annotation.Convert;
-import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Id;
-
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 
-import org.greenrobot.greendao.annotation.Generated;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 /**
  * article entity
@@ -21,7 +11,7 @@ import org.greenrobot.greendao.annotation.Generated;
  */
 @Entity
 public class Article  {
-
+    @PrimaryKey
     private long id;
     private String apkLink;
     private String author;
@@ -43,43 +33,11 @@ public class Article  {
     private int type;
     private int visible;
     private int zan;
-    @Convert(columnType = String.class,converter = TagConverter.class)
     private List<Tag> tags;
 
     public Article() {
     }
-
-    @Generated(hash = 1694465669)
-    public Article(long id, String apkLink, String author, long chapterId,
-            String chapterName, boolean collect, long courseId, String desc,
-            String envelopePic, boolean fresh, String link, String niceDate,
-            String origin, String projectLink, long publishTime,
-            long superChapterId, String superChapterName, String title, int type,
-            int visible, int zan, List<Tag> tags) {
-        this.id = id;
-        this.apkLink = apkLink;
-        this.author = author;
-        this.chapterId = chapterId;
-        this.chapterName = chapterName;
-        this.collect = collect;
-        this.courseId = courseId;
-        this.desc = desc;
-        this.envelopePic = envelopePic;
-        this.fresh = fresh;
-        this.link = link;
-        this.niceDate = niceDate;
-        this.origin = origin;
-        this.projectLink = projectLink;
-        this.publishTime = publishTime;
-        this.superChapterId = superChapterId;
-        this.superChapterName = superChapterName;
-        this.title = title;
-        this.type = type;
-        this.visible = visible;
-        this.zan = zan;
-        this.tags = tags;
-    }
-
+    
     public long getId() {
         return id;
     }
@@ -256,13 +214,6 @@ public class Article  {
         this.tags = tags;
     }
 
-    public boolean getCollect() {
-        return this.collect;
-    }
-
-    public boolean getFresh() {
-        return this.fresh;
-    }
 
     @Override
     public String toString() {

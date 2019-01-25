@@ -1,25 +1,28 @@
 package com.lazylee.lzywanandroid.data.entity;
 
-import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Generated;
+
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.Ignore;
 
 /**
  * tag
- *
+ * <p>
  * Created by lazylee on 2018/4/13.
  */
-@Entity
+@Entity(primaryKeys = {"name", "url"})
 public class Tag {
 
-    private String name;
-    private String url;
+    @NonNull
+    private String name = "";
+    @NonNull
+    private String url = "";
 
     public Tag() {
     }
 
-
-    @Generated(hash = 1594565114)
-    public Tag(String name, String url) {
+    @Ignore
+    public Tag(@NonNull String name, @NonNull String url) {
         this.name = name;
         this.url = url;
     }

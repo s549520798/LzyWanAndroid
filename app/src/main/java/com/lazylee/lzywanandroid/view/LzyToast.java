@@ -41,7 +41,7 @@ public class LzyToast {
 
 
     private static void setCustomsView(String msg, int type) {
-        LayoutInflater inflater = LayoutInflater.from(App.getInstance().getContext());
+        LayoutInflater inflater = LayoutInflater.from(App.getInstance());
         View view = null;
         switch (type) {
             case TYPE_NORMAL:
@@ -71,7 +71,7 @@ public class LzyToast {
 
     private static void setGravity(int gravity, int xOffset, int yOffset) {
         if (mToast == null) {
-            mToast = new Toast(App.getInstance().getContext());
+            mToast = new Toast(App.getInstance());
         }
         mToast.setGravity(gravity, xOffset, yOffset);
     }

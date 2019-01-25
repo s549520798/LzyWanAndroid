@@ -1,34 +1,30 @@
 package com.lazylee.lzywanandroid.data.entity;
 
-import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Id;
-import org.greenrobot.greendao.annotation.Unique;
-import org.greenrobot.greendao.annotation.Generated;
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.Ignore;
 
-@Entity
+@Entity(primaryKeys = {"key"})
 public class SearchHistory {
 
-    @Unique
-    private String key;
+    @NonNull
+    private String key = "";
     private Long date;
 
-
-
-    @Generated(hash = 1696560968)
-    public SearchHistory(String key, Long date) {
+    @Ignore
+    public SearchHistory(@NonNull String key, Long date) {
         this.key = key;
         this.date = date;
     }
-    @Generated(hash = 1905904755)
+
     public SearchHistory() {
     }
 
-
-    
-    public String getKey() {
+    public @NonNull String getKey() {
         return this.key;
     }
-    public void setKey(String key) {
+
+    public void setKey(@NonNull String key) {
         this.key = key;
     }
 
@@ -40,9 +36,11 @@ public class SearchHistory {
                 ", date='" + date + '\'' +
                 '}';
     }
+
     public Long getDate() {
         return this.date;
     }
+
     public void setDate(Long date) {
         this.date = date;
     }

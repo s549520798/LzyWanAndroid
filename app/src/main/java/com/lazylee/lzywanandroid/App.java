@@ -3,13 +3,8 @@ package com.lazylee.lzywanandroid;
 import android.app.Application;
 import android.content.Context;
 
-import com.lazylee.lzywanandroid.data.greendao.DaoMaster;
-import com.lazylee.lzywanandroid.data.greendao.DaoSession;
 import com.lazylee.lzywanandroid.view.LzyToast;
 
-import org.greenrobot.greendao.database.Database;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * application
@@ -18,37 +13,24 @@ import java.util.concurrent.TimeUnit;
 
 public class App extends Application {
 
-    private static App mInstance;
-    private Context mContext;
-    private static final boolean ENCRYPTED = false;
-    private DaoSession daoSession;
+    private static volatile App mContext = null;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        mContext = getApplicationContext();
-        if (mInstance == null) {
-            mInstance = this;
+        if (mContext == null) {
+            mContext = this;
         }
-        LzyToast.initialize(mContext);
-        //初始化daoSession
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, ENCRYPTED ? "wan_android_db_encrypted" : "wan_android_db");
-        Database database = ENCRYPTED ? helper.getEncryptedWritableDb("wan_android") : helper.getWritableDb();
-        daoSession = new DaoMaster(database).newSession();
+        LzyToast.initialize(mContext.getContext());
     }
 
     public static App getInstance() {
-        return mInstance;
-    }
-
-    public Context getContext() {
-        if (mContext == null) {
-            mContext = getApplicationContext();
-        }
         return mContext;
     }
 
-    public DaoSession getDaoSession() {
-        return daoSession;
+    public Context getContext() {
+        return getApplicationContext();
     }
+
+
 }

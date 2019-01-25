@@ -5,8 +5,10 @@ import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 
-import android.support.annotation.ColorInt;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.View;
 
 /**
@@ -32,21 +34,22 @@ public class ArticleRecycleDivider extends RecyclerView.ItemDecoration {
     }
 
     @Override
-    public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+    public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent,
+                               @NonNull RecyclerView.State state) {
         int position = parent.getChildLayoutPosition(view);
         int childCount = parent.getAdapter().getItemCount();
 
-        if (isFirstRow(position)){
-            outRect.set(0,mDividerHeight,0,mDividerHeight/2);
-        }else if (isLastRow(position,childCount)){
-            outRect.set(0,mDividerHeight/2,0,mDividerHeight);
-        }else {
-            outRect.set(0,mDividerHeight/2,0,mDividerHeight/2);
+        if (isFirstRow(position)) {
+            outRect.set(0, mDividerHeight, 0, mDividerHeight / 2);
+        } else if (isLastRow(position, childCount)) {
+            outRect.set(0, mDividerHeight / 2, 0, mDividerHeight);
+        } else {
+            outRect.set(0, mDividerHeight / 2, 0, mDividerHeight / 2);
         }
     }
 
     @Override
-    public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
+    public void onDraw(@NonNull Canvas c, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         c.save();
         int childCount = parent.getChildCount();
         for (int i = 0; i < childCount; i++) {
