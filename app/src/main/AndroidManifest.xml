@@ -19,15 +19,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.enter.EnterActivity">
+        <activity android:name=".ui.activity.enter.EnterActivity">
 
         </activity>
-        <activity android:name=".activity.login.LoginActivity" />
-        <activity android:name=".activity.register.RegisterActivity">
+        <activity android:name=".ui.activity.login.LoginActivity" />
+        <activity android:name=".ui.activity.register.RegisterActivity">
 
         </activity>
         <activity
-            android:name=".activity.main.MainActivity"
+            android:name=".ui.activity.main.MainActivity"
             android:label="@string/title_activity_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,11 +40,11 @@
                 android:resource="@xml/shortcuts" />
         </activity>
         <activity
-            android:name=".activity.search.SearchActivity"
+            android:name=".ui.activity.search.SearchActivity"
             android:windowSoftInputMode="stateVisible|adjustResize">
 
         </activity>
-        <activity android:name=".activity.web.WebActivity">
+        <activity android:name=".ui.activity.web.WebActivity">
 
         </activity>
     </application>

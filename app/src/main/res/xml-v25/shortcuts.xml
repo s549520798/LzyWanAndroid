@@ -9,7 +9,7 @@
         android:shortcutShortLabel="@string/search_shortcut_short_label1">
         <intent
             android:action="android.intent.action.VIEW"
-            android:targetClass="com.lazylee.lzywanandroid.activity.search.SearchActivity"
+            android:targetClass="com.lazylee.lzywanandroid.ui.activity.search.SearchActivity"
             android:targetPackage="com.lazylee.lzywanandroid" />
         <!-- If your shortcut is associated with multiple intents, include them
              here. The last intent in the list determines what the user sees when

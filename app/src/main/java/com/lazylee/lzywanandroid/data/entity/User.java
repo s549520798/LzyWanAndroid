@@ -72,6 +72,14 @@ public class User {
         this.icon = icon;
     }
 
+    public List<Integer> getCollectIds() {
+        return collectIds;
+    }
+
+    public void setCollectIds(List<Integer> collectIds) {
+        this.collectIds = collectIds;
+    }
+
     @Override
     public String toString() {
         return "User{" +

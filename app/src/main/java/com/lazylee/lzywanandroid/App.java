@@ -3,7 +3,7 @@ package com.lazylee.lzywanandroid;
 import android.app.Application;
 import android.content.Context;
 
-import com.lazylee.lzywanandroid.view.LzyToast;
+import com.lazylee.lzywanandroid.ui.view.LzyToast;
 
 
 /**
