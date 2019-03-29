@@ -9,7 +9,7 @@
     android:layout_gravity="bottom"
     android:background="?android:attr/windowBackground"
     android:visibility="visible"
-    app:layout_behavior=".view.behavior.BottomNavigationBehavior"
+    app:layout_behavior=".ui.view.behavior.BottomNavigationBehavior"
     app:menu="@menu/navigation">
 
 </com.google.android.material.bottomnavigation.BottomNavigationView>

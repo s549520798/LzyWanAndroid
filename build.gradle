@@ -25,7 +25,7 @@ buildscript {
         lifecycleVersion = '1.1.1'
         retrofitVersion = '2.4.0'
         androidxVersion = "1.0.0-alpha1"
-        lottieVersion = "2.7.0"
+        lottieVersion = "3.0.0"
         rxAndroidVersion = '2.0.2'
         rxjavaVersion = '2.1.9'
         okhttpVersion = '3.10.0'
