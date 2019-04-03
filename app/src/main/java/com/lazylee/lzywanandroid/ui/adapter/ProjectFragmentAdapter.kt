@@ -15,7 +15,7 @@ class ProjectFragmentAdapter : FragmentPagerAdapter {
     private var mFragments: ArrayList<ProjectVPFragment>? = null
     private var mCategories: ArrayList<ProjectCategory>? = null
 
-    constructor(fm: FragmentManager) : super(fm) {}
+    constructor(fm: FragmentManager) : super(fm)
 
     constructor(fm: FragmentManager?, fragments: ArrayList<ProjectVPFragment>,
                 categories: ArrayList<ProjectCategory>) : super(fm!!) {

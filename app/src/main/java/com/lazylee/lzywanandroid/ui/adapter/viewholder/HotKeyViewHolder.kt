@@ -10,11 +10,7 @@ import com.lazylee.lzywanandroid.ui.view.LzyChip
 
 
 class HotKeyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    internal var chip: LzyChip
-
-    init {
-        chip = itemView.findViewById(R.id.hot_key_chip)
-    }
+    private var chip: LzyChip = itemView.findViewById(R.id.hot_key_chip)
 
     fun bindView(hotKey: HotKey) {
         chip.setChipText(hotKey.name)

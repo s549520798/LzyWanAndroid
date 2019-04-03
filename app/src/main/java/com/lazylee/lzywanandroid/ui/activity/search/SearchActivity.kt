@@ -157,10 +157,6 @@ class SearchActivity : AppCompatActivity(), SearchContract.View, View.OnClickLis
 
     }
 
-    override fun onResume() {
-        super.onResume()
-    }
-
     private fun setSearchBarElevation() {
         // NOTE : elevation 设置失效问题， 要给控件或者layout设置background
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -236,6 +232,6 @@ class SearchActivity : AppCompatActivity(), SearchContract.View, View.OnClickLis
 
     companion object {
 
-        private val TAG = "SearchActivity"
+        private const val TAG = "SearchActivity"
     }
 }

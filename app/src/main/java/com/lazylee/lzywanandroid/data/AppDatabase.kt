@@ -18,7 +18,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
-@Database(entities = arrayOf(User::class, Article::class, Tag::class, SearchHistory::class, HotKey::class), version = 1, exportSchema = false)
+@Database(entities = [User::class, Article::class, Tag::class, SearchHistory::class, HotKey::class], version = 1, exportSchema = false)
 @TypeConverters(EntityListConverter::class)
 abstract class AppDatabase : RoomDatabase() {
 
@@ -33,7 +33,7 @@ abstract class AppDatabase : RoomDatabase() {
 
     companion object {
 
-        private val DATABASE_NAME = "WanAndroidDatabase"
+        private const val DATABASE_NAME = "WanAndroidDatabase"
         /***********创建单例实例 */
         @Volatile
         private var mInstance: AppDatabase? = null
@@ -52,7 +52,7 @@ abstract class AppDatabase : RoomDatabase() {
         }
 
         private fun buildDatabase(context: Context): AppDatabase {
-            return Room.databaseBuilder<AppDatabase>(context, AppDatabase::class.java!!, DATABASE_NAME)
+            return Room.databaseBuilder<AppDatabase>(context, AppDatabase::class.java, DATABASE_NAME)
                     .build()
         }
     }

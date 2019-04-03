@@ -40,7 +40,6 @@ class WebActivity : AppCompatActivity() {
 
     private fun setDefaultWebSetting(webView: WebView) {
         val webSettings = webView.settings
-        webSettings.javaScriptEnabled = jsEnable
         //5.0以上开启混合模式加载
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             webSettings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
@@ -70,6 +69,6 @@ class WebActivity : AppCompatActivity() {
 
     companion object {
 
-        private val TAG = WebActivity::class.java!!.getSimpleName()
+        private val TAG = WebActivity::class.java.simpleName
     }
 }

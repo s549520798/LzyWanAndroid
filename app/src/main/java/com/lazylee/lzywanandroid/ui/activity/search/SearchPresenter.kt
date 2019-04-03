@@ -88,7 +88,7 @@ class SearchPresenter(private val mView: SearchContract.View) : SearchContract.P
                     override fun onNext(pageServiceResult: ServiceResult<Page>) {
                         val page = pageServiceResult.data
                         Log.d(TAG, "onNext: page size" + page!!.datas!!.size)
-                        if (page == null || page.datas!!.size == 0) {
+                        if (page.datas!!.isEmpty()) {
                             mView.showEmptyResultView(true)
                         } else {
                             mView.addSearchResult(page)
@@ -143,7 +143,7 @@ class SearchPresenter(private val mView: SearchContract.View) : SearchContract.P
         } else {
             //TODO 在数据库中查找 hot key
             val list = hotKeyDao.all
-            if (list != null && list.size != 0) {
+            if (list.isNotEmpty()) {
                 for (hotkey in list) {
                     mView.addChip(hotkey.name)
                 }

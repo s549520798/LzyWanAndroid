@@ -33,7 +33,7 @@ class ArticleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         //mTitle.setText(item.getTitle());
         mTitle.text = HtmlCompat.fromHtml(item.title!!, HtmlCompat.FROM_HTML_MODE_COMPACT)
         mAuthor.text = item.author
-        mType.setText(String.format("%s/%s", item.superChapterName, item.chapterName))
+        mType.text = String.format("%s/%s", item.superChapterName, item.chapterName)
         mDate.text = item.niceDate
     }
 

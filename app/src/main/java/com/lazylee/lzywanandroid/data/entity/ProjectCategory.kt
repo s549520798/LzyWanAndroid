@@ -3,7 +3,7 @@ package com.lazylee.lzywanandroid.data.entity
 import android.os.Parcel
 import android.os.Parcelable
 
-class ProjectCategory protected constructor(`in`: Parcel) : Parcelable {
+class ProjectCategory private constructor(`in`: Parcel) : Parcelable {
 
     var id: Int = 0
     var courseId: Int = 0

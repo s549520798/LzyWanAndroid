@@ -3,7 +3,7 @@ package com.lazylee.lzywanandroid.data.entity
 import androidx.room.Entity
 import androidx.room.Ignore
 
-@Entity(primaryKeys = arrayOf("key"))
+@Entity(primaryKeys = ["key"])
 class SearchHistory {
 
     var key = ""

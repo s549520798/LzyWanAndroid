@@ -10,7 +10,7 @@ import androidx.room.Ignore
  *
  * Created by lazylee on 2018/4/13.
  */
-@Entity(primaryKeys = arrayOf("name", "url"))
+@Entity(primaryKeys = ["name", "url"])
 class Tag {
 
     var name = ""
