@@ -53,7 +53,7 @@ class ProjectPresenter(private val mView: ProjectContract.View) : ProjectContrac
 
                     override fun onError(e: Throwable) {
                         Log.d(TAG, "onError: " + e.toString())
-                        mView.showMessage(e.message, LzyToast.TYPE_ERROR)
+                        mView.showMessage(e.message.toString(), LzyToast.TYPE_ERROR)
 
                     }
 

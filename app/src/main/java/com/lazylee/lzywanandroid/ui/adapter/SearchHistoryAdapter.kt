@@ -65,7 +65,7 @@ class SearchHistoryAdapter : RecyclerView.Adapter<SearchHistoryViewHolder>(), Ba
         notifyDataSetChanged()
     }
 
-    override fun setItemClickListener(itemClickListener: (View, Int) -> Unit) {
+    override fun setItemClickListener(itemClickListener: BaseAdapterListener.OnItemClickListener) {
         this.mItemClickListener = itemClickListener
     }
 

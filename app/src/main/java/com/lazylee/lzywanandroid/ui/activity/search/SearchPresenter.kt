@@ -98,7 +98,7 @@ class SearchPresenter(private val mView: SearchContract.View) : SearchContract.P
                     }
 
                     override fun onError(e: Throwable) {
-                        mView.showMessage(e.message)
+                        mView.showMessage(e.message.toString())
                         mView.showProgressBar(false)
                     }
 
@@ -132,7 +132,7 @@ class SearchPresenter(private val mView: SearchContract.View) : SearchContract.P
                         }
 
                         override fun onError(e: Throwable) {
-                            mView.showMessage(e.message)
+                            mView.showMessage(e.message.toString())
                         }
 
                         override fun onComplete() {
@@ -155,10 +155,10 @@ class SearchPresenter(private val mView: SearchContract.View) : SearchContract.P
 
     }
 
-    override fun getSearchHistory(adapter: SearchHistoryAdapter) {
+    override fun getSearchHistory(adapter: SearchHistoryAdapter?) {
         val historyDao = AppDatabase.getInstance(App.instance!!.context)!!.searchHistoryDao()
         val histories = historyDao.all
-        adapter.updateHistories(histories)
+        adapter!!.updateHistories(histories)
     }
 
     companion object {

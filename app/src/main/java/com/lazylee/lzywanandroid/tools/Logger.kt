@@ -38,7 +38,7 @@ object Logger {
             return TAG
         }
 
-    fun e(tag: String, text: Any?) {
+    fun e(tag: String, text: Any) {
         if (!DEBUG) return
         Log.e(tag, text?.toString() ?: "LOGGER IS NULL")//avoid null
     }
@@ -73,7 +73,7 @@ object Logger {
         if (objects != null) {
             e("$currentClassName || $currentMethodName", Arrays.toString(objects.toTypedArray()))
         } else {
-            e(TAG, null)
+            e(TAG)
         }
     }
 }

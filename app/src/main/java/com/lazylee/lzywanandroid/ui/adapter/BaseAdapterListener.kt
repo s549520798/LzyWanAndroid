@@ -14,6 +14,6 @@ interface BaseAdapterListener {
         fun onLongClick(view: View, position: Int): Boolean
     }
 
-    fun setItemClickListener(itemClickListener: (View, Int) -> Unit)
+    fun setItemClickListener(itemClickListener: OnItemClickListener)
     fun setItemLongClickListener(itemLongClickListener: OnItemLongClickListener)
 }

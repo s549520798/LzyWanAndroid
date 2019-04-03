@@ -36,6 +36,7 @@ import com.lazylee.lzywanandroid.ui.view.divider.ArticleRecycleDivider
 import java.util.ArrayList
 
 import com.lazylee.lzywanandroid.tools.StateHelper.hideSoftKeyboard
+import com.lazylee.lzywanandroid.ui.adapter.BaseAdapterListener
 
 
 class SearchActivity : AppCompatActivity(), SearchContract.View, View.OnClickListener {
@@ -64,7 +65,7 @@ class SearchActivity : AppCompatActivity(), SearchContract.View, View.OnClickLis
     private var mEmptyResultView: FrameLayout? = null
 
     private var mResultAdapter: ArticleAdapter? = null
-    internal var articles = ArrayList<Article>()
+    private var articles = ArrayList<Article>()
     private var mHistoryAdapter: SearchHistoryAdapter? = null
 
     private fun initViews() {
@@ -123,11 +124,13 @@ class SearchActivity : AppCompatActivity(), SearchContract.View, View.OnClickLis
         mSearchView!!.setOnClickListener(this)
         mHotKeyView!!.isSingleSelection = true
         mResultAdapter = ArticleAdapter(articles)
-        mResultAdapter!!.setItemClickListener { view, position ->
-            val intent = Intent(view.context, WebActivity::class.java)
-            intent.putExtra("link", articles[position].link)
-            startActivity(intent)
-        }
+        mResultAdapter!!.setItemClickListener (object: BaseAdapterListener.OnItemClickListener{
+            override fun onClick(view: View, position: Int) {
+                val intent = Intent(view.context, WebActivity::class.java)
+                intent.putExtra("link", articles[position].link)
+                startActivity(intent)
+            }
+        })
         mResultView!!.layoutManager = LinearLayoutManager(this)
         mResultView!!.adapter = mResultAdapter
         mResultView!!.addItemDecoration(ArticleRecycleDivider(resources

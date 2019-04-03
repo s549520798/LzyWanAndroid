@@ -57,7 +57,7 @@ class HotKeyAdapter : RecyclerView.Adapter<HotKeyViewHolder>(), BaseAdapterListe
         notifyDataSetChanged()
     }
 
-    override fun setItemClickListener(itemClickListener: (View, Int) -> Unit) {
+    override fun setItemClickListener(itemClickListener: BaseAdapterListener.OnItemClickListener) {
         this.itemClickListener = itemClickListener
     }
 

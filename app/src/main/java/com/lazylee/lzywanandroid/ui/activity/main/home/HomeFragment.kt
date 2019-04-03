@@ -19,6 +19,7 @@ import com.lazylee.lzywanandroid.R
 import com.lazylee.lzywanandroid.ui.activity.web.WebActivity
 import com.lazylee.lzywanandroid.ui.adapter.ArticleAdapter
 import com.lazylee.lzywanandroid.data.entity.Article
+import com.lazylee.lzywanandroid.ui.adapter.BaseAdapterListener
 import com.lazylee.lzywanandroid.ui.view.AppbarRefreshLayout
 import com.lazylee.lzywanandroid.ui.view.LzyToast
 import com.lazylee.lzywanandroid.ui.view.divider.ArticleRecycleDivider
@@ -73,11 +74,13 @@ class HomeFragment : Fragment(), HomeContract.View, SwipeRefreshLayout.OnRefresh
         super.onViewCreated(view, savedInstanceState)
         mPresenter = HomePresenter(this)
         mAdapter = ArticleAdapter(articles)
-        mAdapter!!.setItemClickListener { view1: View, position: Int ->
-            val intent = Intent(view1.context, WebActivity::class.java)
-            intent.putExtra("link", articles[position].link)
-            startActivity(intent)
-        }
+        mAdapter!!.setItemClickListener(object: BaseAdapterListener.OnItemClickListener{
+            override fun onClick(view: View, position: Int) {
+                val intent = Intent(view.context, WebActivity::class.java)
+                intent.putExtra("link", articles[position].link)
+                startActivity(intent)
+            }
+        })
         //mAdapter.setItemLongClickListener((view12, position) -> false);
 
         mRecyclerView!!.layoutManager = LinearLayoutManager(context)

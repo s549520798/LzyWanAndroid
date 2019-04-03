@@ -102,7 +102,7 @@ class ArticleAdapter(private var mList: ArrayList<Article>?) : RecyclerView.Adap
     }
 
 
-    override fun setItemClickListener(itemClickListener: (View, Int) -> Unit) {
+    override fun setItemClickListener(itemClickListener: BaseAdapterListener.OnItemClickListener) {
         this.mItemClickListener = itemClickListener
     }
 

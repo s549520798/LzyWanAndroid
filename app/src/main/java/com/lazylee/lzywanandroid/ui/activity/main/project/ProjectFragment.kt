@@ -35,7 +35,7 @@ class ProjectFragment : Fragment(), ProjectContract.View {
 
     private val mFragments = ArrayList<ProjectVPFragment>()
     private val mCategories = ArrayList<ProjectCategory>()
-    internal var mFragmentAdapter: ProjectFragmentAdapter
+    internal var mFragmentAdapter: ProjectFragmentAdapter? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(R.layout.project_fragment, container, false)
@@ -84,7 +84,7 @@ class ProjectFragment : Fragment(), ProjectContract.View {
             for (category in categories) {
                 mTabLayout!!.addTab(mTabLayout!!.newTab().setText(category.name))
             }
-            mFragmentAdapter.notifyDataSetChanged()
+            mFragmentAdapter!!.notifyDataSetChanged()
         }
     }
 

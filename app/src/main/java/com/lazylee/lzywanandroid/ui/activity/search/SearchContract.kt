@@ -48,6 +48,6 @@ interface SearchContract {
 
         fun getHotKey()
 
-        fun getSearchHistory(adapter: SearchHistoryAdapter)
+        fun getSearchHistory(adapter: SearchHistoryAdapter?)
     }
 }

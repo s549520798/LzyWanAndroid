@@ -46,13 +46,13 @@ class ProjectCategory protected constructor(`in`: Parcel) : Parcelable {
     }
 
     companion object {
-
+        @JvmField
         val CREATOR: Parcelable.Creator<ProjectCategory> = object : Parcelable.Creator<ProjectCategory> {
             override fun createFromParcel(`in`: Parcel): ProjectCategory {
                 return ProjectCategory(`in`)
             }
 
-            override fun newArray(size: Int): Array<ProjectCategory> {
+            override fun newArray(size: Int): Array<ProjectCategory?> {
                 return arrayOfNulls(size)
             }
         }
