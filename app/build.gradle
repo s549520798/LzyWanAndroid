@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 
 
 android {
@@ -81,4 +83,8 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:$room_version" // use kapt for Kotlin
     def work_version = "1.0.0-beta02"
     implementation "android.arch.work:work-runtime:$work_version"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }
