@@ -75,7 +75,7 @@ public class HomeFragment extends Fragment implements HomeContract.View, SwipeRe
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        // Inflate the layout-prot for this fragment
         View mRootView = inflater.inflate(R.layout.home_fragment, container, false);
         mRecyclerView = mRootView.findViewById(R.id.recycle_home_frag);
         mStateView = mRootView.findViewById(R.id.state_layout_root);

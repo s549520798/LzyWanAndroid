@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     private boolean isLogin() {
         //TODO 从数据库中判断是否用户已经登陆，这里模拟没有登陆的状态
-        return false;
+        return true;
     }
 
     private void setEnterFragment() {

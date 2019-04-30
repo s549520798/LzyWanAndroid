@@ -56,7 +56,7 @@ public class ProjectVPFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        // Inflate the layout-prot for this fragment
         View rootView = inflater.inflate(R.layout.project_viewpager_fragment,container,false);
         mTextView = rootView.findViewById(R.id.textView);
         return rootView;
