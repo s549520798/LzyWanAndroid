@@ -7,7 +7,8 @@ import com.lazylee.lzywanandroid.data.entity.User;
 import com.lazylee.lzywanandroid.net.Api;
 import com.lazylee.lzywanandroid.net.ServiceResult;
 import com.lazylee.lzywanandroid.net.WanAndroidService;
-import com.lazylee.lzywanandroid.tools.Logger;
+import com.lazylee.lzywanandroid.tools.log.Logger;
+import com.lazylee.lzywanandroid.tools.log.Logger.*;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -36,19 +37,20 @@ public class LoginPresenter implements LoginContract.Presenter {
     public void login(final String userName, final String password) {
         mLoginView.enableLoginButton(false);
         boolean cancelLogin = false;
-        if (TextUtils.isEmpty(userName)){
+        if (TextUtils.isEmpty(userName)) {
             mLoginView.showUsernameError("用户名不能为空");
+            Logger.e(Logger.LOG_MODEL_UI, Logger.LOG_DETAIL_LOGIN, TAG, "login user name is empty");
             cancelLogin = true;
         }
 
-        if (TextUtils.isEmpty(password)){
+        if (TextUtils.isEmpty(password)) {
             mLoginView.showPasswordError("密码不能为空");
             cancelLogin = true;
         }
-        if (cancelLogin){
-            Log.d(TAG, "login: username or password is empty");
+        if (cancelLogin) {
+            Logger.d(Logger.LOG_MODEL_UI,Logger.LOG_DETAIL_LOGIN,TAG, "login: username or password is empty");
             mLoginView.enableLoginButton(true);
-        }else {
+        } else {
             Log.d(TAG, "login: is login ");
             mLoginView.showProgressBar(true);
 
@@ -58,7 +60,7 @@ public class LoginPresenter implements LoginContract.Presenter {
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();
             WanAndroidService wanAndroidService = retrofit.create(WanAndroidService.class);
-            wanAndroidService.login(userName,password)
+            wanAndroidService.login(userName, password)
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Observer<ServiceResult<User>>() {
@@ -69,7 +71,7 @@ public class LoginPresenter implements LoginContract.Presenter {
 
                         @Override
                         public void onNext(ServiceResult<User> userServiceResult) {
-                            if (userServiceResult.getErrorCode() < 0){
+                            if (userServiceResult.getErrorCode() < 0) {
                                 mLoginView.showProgressBar(false);
                                 mLoginView.enableLoginButton(true);
                                 mLoginView.showMessage(userServiceResult.getErrorMsg());
@@ -85,7 +87,6 @@ public class LoginPresenter implements LoginContract.Presenter {
 
                         @Override
                         public void onComplete() {
-                            Logger.d("onComplete");
                             mLoginView.showProgressBar(false);
                         }
                     });

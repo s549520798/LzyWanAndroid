@@ -3,6 +3,7 @@ package com.lazylee.lzywanandroid;
 import android.app.Application;
 import android.content.Context;
 
+import com.lazylee.lzywanandroid.tools.log.Logger;
 import com.lazylee.lzywanandroid.ui.view.LzyToast;
 
 
@@ -22,6 +23,7 @@ public class App extends Application {
             mContext = this;
         }
         LzyToast.initialize(mContext.getContext());
+        Logger.setDebuggable(BuildConfig.DEBUG);
     }
 
     public static App getInstance() {

@@ -7,9 +7,11 @@ import android.os.Bundle;
 
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -22,15 +24,14 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 
-
 import com.lazylee.lzywanandroid.R;
+import com.lazylee.lzywanandroid.tools.log.Logger;
 import com.lazylee.lzywanandroid.ui.activity.web.WebActivity;
 import com.lazylee.lzywanandroid.ui.adapter.ArticleAdapter;
 import com.lazylee.lzywanandroid.ui.adapter.HotKeyAdapter;
 import com.lazylee.lzywanandroid.ui.adapter.SearchHistoryAdapter;
 import com.lazylee.lzywanandroid.data.entity.Article;
 import com.lazylee.lzywanandroid.data.entity.Page;
-import com.lazylee.lzywanandroid.tools.Logger;
 import com.lazylee.lzywanandroid.ui.view.LzyToast;
 import com.lazylee.lzywanandroid.ui.view.divider.ArticleRecycleDivider;
 
@@ -97,12 +98,12 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
         mSearchEdit.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                Logger.d(TAG, "beforeTextChanged : s = " + s + "s.length = " + s.toString().length());
+                Logger.d(Logger.LOG_MODEL_UI, Logger.LOG_DETAIL_SEARCH, TAG, "beforeTextChanged : s = " + s + "s.length = " + s.toString().length());
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                Logger.d(TAG, "onTextChanged : s = " + s + "s.length = " + s.length());
+                Logger.d(Logger.LOG_MODEL_UI, Logger.LOG_DETAIL_SEARCH, TAG, "onTextChanged : s = " + s + "s.length = " + s.length());
                 if (s.length() == 0) {
                     showSearchAndCloseBtn(false);
                 } else if (s.length() >= 1) {
@@ -112,7 +113,7 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
 
             @Override
             public void afterTextChanged(Editable s) {
-                Logger.d(TAG, "afterTextChanged : s = " + s);
+                Logger.d(Logger.LOG_MODEL_UI, Logger.LOG_DETAIL_SEARCH, TAG, "afterTextChanged : s = " + s);
             }
         });
         //响应soft keyboard  中“搜索”按钮的点击
@@ -155,7 +156,7 @@ public class SearchActivity extends AppCompatActivity implements SearchContract.
             mPresenter.getHotKey();
             isHotKeyObtained = true;
         }
-        if (!isHistoryObtained){
+        if (!isHistoryObtained) {
             mPresenter.getSearchHistory(mHistoryAdapter);
             isHistoryObtained = true;
         }

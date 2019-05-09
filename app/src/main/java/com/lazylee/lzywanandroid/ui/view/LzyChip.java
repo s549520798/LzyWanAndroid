@@ -11,6 +11,7 @@ import androidx.annotation.Px;
 import androidx.annotation.StringRes;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
+
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
@@ -19,7 +20,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.lazylee.lzywanandroid.R;
-import com.lazylee.lzywanandroid.tools.Logger;
+import com.lazylee.lzywanandroid.tools.log.Logger;
 
 /**
  * chip holds hot key
@@ -87,7 +88,7 @@ public class LzyChip extends FrameLayout {
     }
 
     private void initBackgroundColor() {
-        Logger.d(TAG, "initBackgroundColor: ");
+        Logger.d(Logger.LOG_MODEL_UI, Logger.LOG_DETAIL_COMMON, TAG, "initBackgroundColor: ");
         float mRadius = getResources().getDimension(R.dimen.chip_radius);
         GradientDrawable bgDrawable = new GradientDrawable();
         bgDrawable.setShape(GradientDrawable.RECTANGLE);
@@ -103,7 +104,7 @@ public class LzyChip extends FrameLayout {
     }
 
     private void initTextView() {
-        Logger.d(TAG, "initText: ");
+        Logger.d(Logger.LOG_MODEL_UI, Logger.LOG_DETAIL_COMMON, TAG, "chip initTextView");
         if (!ViewCompat.isAttachedToWindow(this)) {
             return;
         }
@@ -126,7 +127,7 @@ public class LzyChip extends FrameLayout {
         mTextView.setSingleLine(true);
         mTextView.setTextColor(mTextColor);
         mTextView.setText(mText);
-        Logger.d(TAG, "initText: add text view");
+        Logger.d(Logger.LOG_MODEL_UI, Logger.LOG_DETAIL_COMMON, TAG, "chip initText: add text view");
         this.removeView(mTextView);
         this.addView(mTextView);
     }

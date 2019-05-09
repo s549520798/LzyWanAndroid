@@ -3,7 +3,6 @@ package com.lazylee.lzywanandroid.ui.activity.enter;
 import android.content.Intent;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import io.reactivex.Observable;
@@ -13,6 +12,7 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
 import com.lazylee.lzywanandroid.R;
+import com.lazylee.lzywanandroid.tools.log.Logger;
 import com.lazylee.lzywanandroid.ui.activity.main.MainActivity;
 
 import java.util.concurrent.TimeUnit;
@@ -42,8 +42,8 @@ public class EnterActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(Long aLong) {
-                        Log.e(TAG, "onNext: count " + aLong);
-                        if (aLong.equals(3L)) {
+                        Logger.d(Logger.LOG_MODEL_UI, Logger.LOG_DETAIL_MAIN, TAG, "计时 count " + aLong);
+                        if (aLong.equals(2L)) {
                             if (!disposable.isDisposed()) disposable.dispose();
                             skipToMainActivity();
                         }
@@ -51,8 +51,7 @@ public class EnterActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.e(TAG, "onError:", e);
-                        //TODO 跳转
+                        Logger.e(Logger.LOG_MODEL_UI, Logger.LOG_DETAIL_MAIN, TAG, e);
                         if (!disposable.isDisposed()) {
                             disposable.dispose();
                         }
@@ -85,6 +84,7 @@ public class EnterActivity extends AppCompatActivity {
     }
 
     private void skipToMainActivity() {
+        Logger.d(Logger.LOG_MODEL_UI, Logger.LOG_DETAIL_MAIN, TAG, "EnterActivity 跳转到 MainActivity");
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
