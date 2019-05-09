@@ -5,6 +5,8 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import static com.lazylee.lzywanandroid.tools.log.Utils.*;
+
 
 /**
  * log tool
@@ -36,30 +38,50 @@ public class Logger {
 
 
     private static boolean mIsDebuggable;
+    private static boolean mAllowWrite2Local;
 
     public static void setDebuggable(boolean debuggable) {
         mIsDebuggable = debuggable;
     }
 
+    public static void allowWrite2Local(boolean allow){
+        mAllowWrite2Local = allow;
+        if (mAllowWrite2Local){
+            //TODO 初始化写入程序
+        }
+    }
+
     public static void i(int model, int detail, @Nullable String tag, @Nullable Object o) {
         if (mIsDebuggable) {
             Log.i(getLogTag(model, detail, tag) + " || " + getCurrentMethodName(), o != null ? o.toString() : "LOG INFO Message is null");
+            return;
         }
-        //TODO write log to file
+        //TODO write log to local file
+        if (mAllowWrite2Local){
+
+        }
     }
 
     public static void d(int model, int detail, @Nullable String tag, @Nullable Object o) {
         if (mIsDebuggable) {
             Log.d(getLogTag(model, detail, tag) + " || " + getCurrentMethodName(), o != null ? o.toString() : "LOG DEBUG Message is null");
+            return;
         }
-        //TODO write log to file
+        //TODO write log to local file
+        if (mAllowWrite2Local){
+
+        }
     }
 
     public static void e(int model, int detail, @Nullable String tag, @Nullable Object o) {
         if (mIsDebuggable) {
             Log.e(getLogTag(model, detail, tag) + " || " + getCurrentMethodName(), o != null ? o.toString() : "LOG Error Message is null");
+            return;
         }
-        //TODO write log to file
+        //TODO write log to local file
+        if (mAllowWrite2Local){
+
+        }
     }
 
     private static String getLogTag(int model, int detail, @Nullable String tag) {
@@ -103,23 +125,6 @@ public class Logger {
 
     }
 
-    private static String getCurrentMethodName() {
-        try {
-            return Thread.currentThread().getStackTrace()[4].getMethodName() + "()";
-        } catch (Exception ignored) {
-        }
-        return "NoFindMethod";
-    }
 
-    private static String getCurrentClassName() {
-        try {
-            String className = Thread.currentThread().getStackTrace()[4].getClassName();
-            String[] temp = className.split("[.]");
-            className = temp[temp.length - 1];
-            return className;
-        } catch (Exception ignored) {
-        }
-        return "NoFindClass";
-    }
 
 }
