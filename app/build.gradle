@@ -34,10 +34,10 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'androidx.appcompat:appcompat:1.1.0-alpha01'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta2'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'com.google.android.material:material:1.1.0-alpha02'
+    implementation 'com.google.android.material:material:1.1.0-alpha10'
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxAndroidVersion"
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjavaVersion"
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
@@ -52,29 +52,29 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 
     // ViewModel and LiveData
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0-alpha01'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
 
     // alternatively - just ViewModel
-    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.1.0-alpha01'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.1.0'
 
     // use -ktx for Kotlin
 
     // alternatively - just LiveData
-    implementation 'androidx.lifecycle:lifecycle-livedata:2.1.0-alpha01'
+    implementation 'androidx.lifecycle:lifecycle-livedata:2.1.0'
 
     // alternatively - Lifecycles only (no ViewModel or LiveData).
 
     //     Support library depends on this lightweight import
-    implementation 'androidx.lifecycle:lifecycle-runtime:2.1.0-alpha01'
-    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.1.0-alpha01'
+    implementation 'androidx.lifecycle:lifecycle-runtime:2.1.0'
+    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.1.0'
 
     // use kapt for Kotlin
 
     // alternately - if using Java8, use the following instead of compiler
-    implementation 'androidx.lifecycle:lifecycle-common-java8:2.1.0-alpha01'
+    implementation 'androidx.lifecycle:lifecycle-common-java8:2.1.0'
 
     // optional - ReactiveStreams support for LiveData
-    implementation 'androidx.lifecycle:lifecycle-reactivestreams:2.1.0-alpha01'
+    implementation 'androidx.lifecycle:lifecycle-reactivestreams:2.1.0'
 
     def room_version = "2.1.0-alpha03"
     implementation "androidx.room:room-runtime:$room_version"

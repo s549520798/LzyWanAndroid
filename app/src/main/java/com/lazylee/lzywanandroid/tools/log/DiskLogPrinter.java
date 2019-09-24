@@ -24,11 +24,11 @@ public class DiskLogPrinter {
     }
 
     public void log(int level, @Nullable String tag, @NonNull String msg) {
-        String content = getLogContent(level, tag, msg);
+        String content = getLogContent(tag, msg);
         mHandler.handleMessage(mHandler.obtainMessage(level, msg));
     }
 
-    private String getLogContent(int level, String tag, String msg) {
+    private String getLogContent(String tag, String msg) {
         return null;
     }
 
